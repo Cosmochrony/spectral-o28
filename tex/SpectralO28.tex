@@ -81,7 +81,7 @@ and Inter-Pair Trajectory Diversity\\[4pt]
     across pairs after removing the common power-law component.
     The second singular value $\sigma_2/\sigma_1$ grows monotonically with $q$
     ($\text{[PLACEHOLDER]}$ at $q=29$ to $\text{[PLACEHOLDER]}$ at $q=151$),
-    providing evidence of increasing trajectory diversity.
+    providing evidence of increasing inter-pair trajectory diversity after removal of the common power-law component.
     The formal Test~4 of O26 (Criterion~5.4) requires per-block Weil vector
     trajectories not stored in the current pipeline and is deferred to a
     dedicated extension.
@@ -224,8 +224,8 @@ and Inter-Pair Trajectory Diversity\\[4pt]
       \begin{remark}
         The ratio $n_1(q)/q$ is decreasing over the tested range, indicating that the
         true asymptotic regime $n_1(q) \sim \alpha q$ has not yet been reached.
-        Proposition~\ref{prop:ols} therefore provides an empirical lower bound on
-        $\hat\alpha$ rather than a definitive identification.
+        Proposition~\ref{prop:ols} therefore provides a lower-bound estimate of the asymptotic
+        proportionality constant rather than a convergent identification.
         Extending the campaign to $q \in \{211, 307\}$ would constrain $\hat\alpha$
         more tightly.
       \end{remark}
@@ -284,6 +284,8 @@ and Inter-Pair Trajectory Diversity\\[4pt]
       Each row is normalised to unit $\ell^2$ norm (removing amplitude variation
       between pairs), and the column mean is subtracted (removing the common
       power-law decay shared by all pairs).
+      This centering removes the universal power-law decay identified in
+      O25~\cite{Beau2026a29}, isolating pair-specific deviations from the mean trajectory.
       The singular value decomposition of the resulting centred matrix gives the
       proxy singular values $\sigma_1 \geq \sigma_2 \geq \cdots$.
 
@@ -362,12 +364,17 @@ and Inter-Pair Trajectory Diversity\\[4pt]
       This is a necessary-condition evidence for a multi-dimensional ambient space,
       but not yet discriminating.
 
+      Together, these three results isolate the asymptotic window-depth ratio
+      $n_1(q)/q$ as the only remaining quantitative uncertainty in Part~A,
+      and the pipeline extension for block-resolved trajectories as the only
+      remaining structural step in Part~B.
+
     \subsection{Two scenarios for $q = 151$}
 
       The key discriminating quantity at $q = 151$ is $n_1(151)/151$.
       Two scenarios determine the epistemic status of O28.
 
-      \textbf{Scenario~S1 (stabilisation).}
+      \textbf{Scenario~S1 (stabilisation --- quantitative closure).}
       If $n_1(151)/151 \approx 0.10$, the ratio has reached approximate plateau.
       The OLS fit becomes significant ($R^2 \geq 0.99$, $p \leq 0.01$), and
       $\hat\alpha$ is identified as a stable asymptotic constant.
@@ -375,7 +382,7 @@ and Inter-Pair Trajectory Diversity\\[4pt]
       the finite-size correction $\eta \log q / \log n_1(q)$ is quantitatively
       controlled, and $\delta_\infty$ is bounded within the admissible window.
 
-      \textbf{Scenario~S2 (continued decrease).}
+      \textbf{Scenario~S2 (continued decrease --- qualitative confirmation only).}
       If $n_1(151)/151 < 0.10$, the ratio continues to decrease and the asymptotic
       regime is not yet reached at $q = 151$.
       The OLS slope $\hat\alpha$ revises downward and the confidence interval
@@ -399,6 +406,10 @@ and Inter-Pair Trajectory Diversity\\[4pt]
         Weil vector trajectories and execute the formal O26 Test~4
         (Criterion~5.4) in $\mathrm{End}(V_\rho)$,
         with memory cost $O(n_{\mathrm{pairs}} \cdot M \cdot q^2)$ per prime.
+        The O29 pipeline will reconstruct the covariance operator $C_c$ in
+        $\mathrm{End}(V_\rho)$ from block-resolved trajectories, enabling direct
+        evaluation of the effective dimension $\reff$ and the identification of
+        the correct irreducible sector.
       \end{itemize}
 
 % ===========================================================================
@@ -420,6 +431,8 @@ and Inter-Pair Trajectory Diversity\\[4pt]
     formal level: the inter-pair rank proxy provides evidence for increasing
     trajectory diversity, but the exact effective-dimension test of O26
     requires block-resolved Weil trajectories and is deferred to O29.
+    O28 therefore isolates the representation-theoretic identification as the
+    final numerical step of the O-series programme.
 
 
 % ===========================================================================
