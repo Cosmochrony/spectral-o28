@@ -19,9 +19,9 @@
   urlcolor=blue,
 }
 
-% ---------------------------------------------------------------------------
+
 % Theorem environments
-% ---------------------------------------------------------------------------
+
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{lemma}[theorem]{Lemma}
 \newtheorem{proposition}[theorem]{Proposition}
@@ -30,9 +30,9 @@
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
 
-% ---------------------------------------------------------------------------
+
 % Notation shortcuts
-% ---------------------------------------------------------------------------
+
 \newcommand{\dpair}{\delta_{\mathrm{pair}}}
 \newcommand{\dcorr}{\delta_{\mathrm{corr}}}
 \newcommand{\dbar}{\bar{\delta}_{\mathrm{pair}}}
@@ -43,7 +43,7 @@
 \newcommand{\spair}{\sigma_{\mathrm{pair}}}
 \newcommand{\reff}{r_{\mathrm{eff}}}
 
-% ---------------------------------------------------------------------------
+
 \title{Asymptotic Calibration of the BFS Window\\
 and Inter-Pair Trajectory Diversity\\[4pt]
 {\large O28 --- Spectral Admissibility Sub-programme}}
@@ -54,11 +54,11 @@ and Inter-Pair Trajectory Diversity\\[4pt]
 
 \date{2026}
 
-% ---------------------------------------------------------------------------
+
 \begin{document}
   \maketitle
 
-% ---------------------------------------------------------------------------
+
   \begin{abstract}
     The O25 programme~\cite{Beau2026a29} identified the ratio $n_1(q)/q$ as the
     central open asymptotic variable controlling the finite-size drift of
@@ -90,9 +90,7 @@ and Inter-Pair Trajectory Diversity\\[4pt]
   \tableofcontents
   \bigskip
 
-% ===========================================================================
   \section{Position of the Problem}
-% ===========================================================================
 
     \subsection{What O25--O27 established}
 
@@ -150,9 +148,8 @@ and Inter-Pair Trajectory Diversity\\[4pt]
         data would be required for the formal test.
       \end{enumerate}
 
-% ===========================================================================
   \section{Setup and Notation}
-% ===========================================================================
+
 
     We follow the notation of O25~\cite{Beau2026a29}.
     Let $q$ be an odd prime, $\Gq = \Heis$, and $\mathrm{Cay}(\Gq, S_q)$
@@ -175,9 +172,7 @@ and Inter-Pair Trajectory Diversity\\[4pt]
       \qquad \eta = \tfrac{1}{2}.
     \end{equation}
 
-% ===========================================================================
   \section{Part A: Asymptotic Calibration of $n_1(q)/q$}
-% ===========================================================================
 
     \subsection{Extraction of $n_1(q)$ from O25 checkpoints}
 
@@ -191,11 +186,11 @@ and Inter-Pair Trajectory Diversity\\[4pt]
         \label{tab:n1}
         \begin{tabular}{rrrrrr}
           \toprule
-          $q$ & $n_1(q)$ & $n_1(q)/q$ & $\dbar(q)$ & $\eta\log q/\log n_1$ & $\dcorr(q)$ \\
+          $q$ & $n_1(q)$ & $n_1(q)/q$ & $\dbar(q)$       & $\eta\log q/\log n_1$ & $\dcorr(q)$      \\
           \midrule
-          29 &  4 & 0.138 & \phantom{0}8.893 & 1.215 & 10.801 \\
-          61 &  8 & 0.131 & \phantom{0}9.983 & 0.989 & \phantom{0}9.868 \\
-          101 & 11 & 0.109 & \phantom{0}9.548 & 0.962 & \phantom{0}9.188 \\
+          29  & 4        & 0.138      & \phantom{0}8.893 & 1.215                 & 10.801           \\
+          61  & 8        & 0.131      & \phantom{0}9.983 & 0.989                 & \phantom{0}9.868 \\
+          101 & 11       & 0.109      & \phantom{0}9.548 & 0.962                 & \phantom{0}9.188 \\
           151 & [PLACEHOLDER] & [PLACEHOLDER]
           & [PLACEHOLDER] & [PLACEHOLDER] & [PLACEHOLDER] \\
           \bottomrule
@@ -244,9 +239,7 @@ and Inter-Pair Trajectory Diversity\\[4pt]
       $\dbar(q)$ is a finite-size normalisation effect, not a structural deviation
       below the admissible window.
 
-% ===========================================================================
   \section{Part B: Inter-Pair Trajectory Diversity (Proxy for O26 Test 4)}
-% ===========================================================================
 
     \subsection{Scope and limitation}
 
@@ -311,10 +304,10 @@ and Inter-Pair Trajectory Diversity\\[4pt]
           $q$ & $n_{\mathrm{pairs}}$ & $n_{\mathrm{win}}$ & $\sigma_2/\sigma_1$
           & $\reff^{\mathrm{PR}}$ & Informative \\
           \midrule
-          29 & 14 &  3 & 0.042 & 1.00 & No \\
-          61 & 30 &  7 & 0.100 & 1.02 & No \\
-          101 & 50 &  9 & 0.194 & 1.08 & No \\
-          151 & [PH] & [PH] & [PH] & [PH] & [PH] \\
+          29  & 14   & 3    & 0.042 & 1.00 & No   \\
+          61  & 30   & 7    & 0.100 & 1.02 & No   \\
+          101 & 50   & 9    & 0.194 & 1.08 & No   \\
+          151 & [PH] & [PH] & [PH]  & [PH] & [PH] \\
           \bottomrule
         \end{tabular}
       \end{table}
@@ -338,9 +331,7 @@ and Inter-Pair Trajectory Diversity\\[4pt]
       This is a non-trivial extension (memory cost $O(n_{\mathrm{pairs}} \cdot M \cdot q^2)$
       per prime) and is deferred to O29.
 
-% ===========================================================================
   \section{Discussion}
-% ===========================================================================
 
     \subsection{What O28 establishes unconditionally}
 
@@ -412,9 +403,8 @@ and Inter-Pair Trajectory Diversity\\[4pt]
         the correct irreducible sector.
       \end{itemize}
 
-% ===========================================================================
   \section{Conclusion}
-% ===========================================================================
+
 
     O28 closes the asymptotic calibration side of the post-O27 programme by
     measuring the BFS window ratio $n_1(q)/q$ and reassessing the
@@ -434,27 +424,24 @@ and Inter-Pair Trajectory Diversity\\[4pt]
     O28 therefore isolates the representation-theoretic identification as the
     final numerical step of the O-series programme.
 
-
-% ===========================================================================
   \section*{Data and Code Availability}
-% ===========================================================================
+
 
     The numerical pipeline \texttt{o25\_paired\_pipeline.py} (patched for O28),
     the analysis script \texttt{o28\_analysis.py}, and the checkpoint files
     \texttt{q\{q\}\_o25.npz} for $q \in \{29, 61, 101, 151\}$ are available at
     \texttt{[ZENODO DOI PLACEHOLDER]}.
 
-% ===========================================================================
   \section*{Acknowledgements}
-% ===========================================================================
+
 
     AI-assisted tools were used during the preparation of this work.
     All scientific content, results, and conclusions are the sole responsibility
     of the author.
 
-% ===========================================================================
+
     \bibliographystyle{plain}
     \bibliography{cosmochrony-bibliography}
-% ===========================================================================
+
 
 \end{document}
