@@ -16,7 +16,7 @@
 \newtheorem{remark}[theorem]{Remark}
 
 \title{Asymptotic Calibration of the BFS Window\\
-and Inter-Pair Trajectory Diversity\\[4pt]
+and Effective Dimension of the Admissible Trajectory\\[4pt]
 \large O28 --- Spectral Admissibility Sub-programme}
 \author{J\'{e}r\^{o}me Beau\\
 \small Independent Researcher\\
@@ -27,417 +27,397 @@ and Inter-Pair Trajectory Diversity\\[4pt]
   \maketitle
 
   \begin{abstract}
-    The O25 programme~\cite{Beau2026a25} identified the ratio $n_1(q)/q$ as the central open
-    asymptotic variable controlling the finite-size drift of $\bar{\delta}_{\mathrm{pair}}(q)$ and the
-    effectiveness of the O14 normalisation correction~\cite{Beau2026a14}.
-    The present paper reports two measurements on the O25 checkpoints for
-    $q \in \{29, 61, 101, 151, 211\}$.
-    First, we extract $n_1(q)$ directly from the auto-calibrated fitting windows and fit
-    $n_1(q) = \hat{\alpha}\, q + \hat{\beta}$ by ordinary least squares, obtaining
-    $\hat{\alpha} \approx 0.053$ with $R^2 \approx 0.879$ and $p \approx 0.018$.
-    The correction factor $\eta \log q / \log n_1(q)$ remains $O(1)$ across all tested primes,
-    and the corrected exponent $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$ for all
-    $q \in \{29, 61, 101, 151, 211\}$, consistent with the admissible window
-    established in O9--O14~\cite{Beau2026a9,Beau2026a14}.
-    Second, we develop an inter-pair trajectory diversity proxy for the effective-dimension
-    test of O26~\cite{Beau2026a26}, using the per-pair mean trajectories $\bar{\sigma}_c(n)$ stored in
-    the O25 checkpoints.
-    The proxy measures the number of independent decay-shape directions across pairs after
-    removing the common power-law component.
-    The second singular value ratio $\sigma_2 / \sigma_1$ grows monotonically with $q$
-    ($0.042$ at $q = 29$ to $0.238$ at $q = 211$), providing evidence of increasing
-    inter-pair trajectory diversity.
-    At $q = 151$, the first prime for which the proxy is informative
-    ($n_{\mathrm{win}} \geq 10$ and per-conjugate sigma vectors available), the
-    participation-ratio rank is $r_{\mathrm{eff}}^{\mathrm{PR}} \approx 1.09$ and the
-    $10\%$-threshold rank is $r_{\mathrm{eff}}^{10\%} = 2$; the spin-$\tfrac{1}{2}$ prediction
-    $d_\rho^2 = 4$ of O26 Criterion~5.4 is not yet reached at the proxy level.
-    The formal Test~4 of O26 requires per-block Weil vector trajectories not stored in
-    the current pipeline and is deferred to a dedicated extension.
+    The O25 programme~\cite{Beau2026a29} identified the ratio $n_1(q)/q$ as the central open
+    asymptotic variable controlling the finite-size drift of $\bar{\delta}_{\mathrm{pair}}(q)$,
+    and O26--O27~\cite{Beau2026a30,Beau2026a31} identified the effective dimension
+    $r_{\mathrm{eff}} = d_\rho^2$ of the per-pair covariance operator in $\mathrm{End}(V_\rho)$
+    as the key falsifiability criterion for the representation-theoretic identification.
+    The present paper reports two measurements from the Q5a-O5 checkpoints for
+    $q \in \{29, 61, 101, 151\}$.
+    First, we extract $n_1(q)$ from the auto-calibrated fitting windows and fit
+    $n_1(q) = \hat{\alpha}\,q + \hat{\beta}$ by ordinary least squares, obtaining
+    $\hat{\alpha} \approx 0.053$ with $R^2 \approx 0.879$.
+    The O14 correction~\cite{Beau2026a18} yields
+    $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$
+    for all $q \in \{29, 61, 101, 151, 211\}$, confirming the structural conclusion of O25.
+    Second, using the per-block Weil vector projections $\pi_c(v)$ stored in the Q5a-O5
+    checkpoints, we perform the formal effective-dimension computation of O26 Criterion~5.4
+    in $\mathrm{End}(H_{\mathrm{eff}})$, where $H_{\mathrm{eff}} = \mathbb{C}^3$ is the
+    admissible projection space ($\mathrm{HEFF\_DIM} = 3$, consistent with $\Sigma_c(n_3) = 3$
+    from O23~\cite{Beau2026a27}).
+    The covariance $\mathcal{C}_c$ has rank exactly $r_{\mathrm{eff}} = 3$ for every conjugate
+    pair and every prime $q \in \{61, 101, 151\}$ (100\% of pairs), with normalised eigenvalue
+    structure $[\lambda_1 : \lambda_2 : \lambda_3] = [1 : \tfrac{1}{2} : \tfrac{1}{2}]$
+    invariant across all pairs and primes.
+    This rank-3 result fills $H_{\mathrm{eff}}$ completely.
+    The gap from the spin-$\tfrac{1}{2}$ prediction $d_\rho^2 = 4$ reflects that
+    $H_{\mathrm{eff}} \neq V_\rho$: the formal test within $\mathrm{End}(V_\rho)$ requires
+    first identifying $V_\rho \subset H_{\mathrm{eff}}$, which is the object of O29.
   \end{abstract}
 
-  \tableofcontents
+  \paragraph{Keywords.}
+    spectral admissibility; BFS window depth; pair observable; Weil representation; Heisenberg graphs; capacity
+    exponent; normalisation correction; covariance operator; effective dimension; admissible trajectory; Born--Infeld
+    saturation
+
+    \clearpage
+    \tableofcontents
+
+    \clearpage
 
   \section{Position of the Problem}
 
-    \subsection{What O25--O27 established}
+  \subsection{What O25--O27 established}
 
-      Paper O25~\cite{Beau2026a25} established three results for the pair observable
-      $\sigma_{\mathrm{pair}}(n) = \sigma_c(n)\,\sigma_{q-c}(n)$ on $\mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$:
-      (i) the inter-pair standard deviation of $\delta_{\mathrm{pair}}$ decreases monotonically from
-      $0.54$ at $q = 29$ to $0.11$ at $q = 211$, confirming that $\delta_{\mathrm{pair}}$ is a
-      structural invariant of the Weil representation;
-      (ii) empirical fits of the form $\delta_\infty + a/\!\log q$ describe the data well but carry
-      no asymptotic meaning, because the leading finite-size correction $\eta \log q / \log n_1(q) \approx 1$
-      is itself $q$-dependent;
-      (iii) when the O14 correction is applied, the corrected values $\delta_{\mathrm{corr}}(q) \in [7.7, 9.0]$
-      fall within the admissible window $[7.4, 10.6]$ for $q \in \{61, 101, 151, 211\}$.
-      O25 identified the ratio $n_1(q)/q$ as the central open direction.
+    Paper O25~\cite{Beau2026a29} established three results for the pair observable
+    $\sigma_{\mathrm{pair}}(n) = \sigma_c(n)\,\sigma_{q-c}(n)$ on
+    $\mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$:
+    (i) the inter-pair standard deviation of $\delta_{\mathrm{pair}}$ decreases monotonically
+    from $0.54$ at $q = 29$ to $0.11$ at $q = 211$, confirming that $\delta_{\mathrm{pair}}$
+    is a structural invariant of the Weil representation;
+    (ii) empirical fits carry no asymptotic meaning because the leading finite-size correction
+    $\eta\log q/\log n_1(q) \approx 1$ is itself $q$-dependent;
+    (iii) when the O14 correction is applied, the corrected values fall within the admissible
+    window $[7.4, 10.6]$.
+    O25 identified the ratio $n_1(q)/q$ as the central open direction.
 
-      Paper O26~\cite{Beau2026a26} established a dictionary between conjugate Weil blocks and
-      rank-one matrix coefficients in a representation space, and formulated a hierarchy of
-      identifications (Levels~I--III) for the pair observable.
-      Level~I (proved) establishes that $\sigma_{\mathrm{pair}}(n)$ and the Hilbert--Schmidt norm of an
-      associated matrix trajectory share the same growth exponent.
-      Test~4 of O26 (Criterion~5.4) provides the key falsifiability criterion: the effective
-      dimension $r_{\mathrm{eff}}$ of the per-pair covariance operator
-      $\mathcal{C}_c = N^{-1} \sum_n \operatorname{vec}(\widetilde{M}^f_n)\operatorname{vec}(\widetilde{M}^f_n)^\dagger$
-      in $\operatorname{End}(V_\rho)$ should equal $d_\rho^2 = 4$ for the spin-$\tfrac{1}{2}$ sector candidate.
+    Paper O26~\cite{Beau2026a30} established a dictionary between conjugate Weil blocks and
+    rank-one matrix coefficients in a representation space, and formulated a hierarchy of
+    identifications (Levels~I--III).
+    Test~4 of O26 (Criterion~5.4) provides the key falsifiability criterion: the effective
+    dimension $r_{\mathrm{eff}}$ of the per-pair covariance operator
+    \begin{equation}
+      \mathcal{C}_c = \frac{1}{N}
+      \sum_{n=n_0}^{n_1}
+      \operatorname{vec}(\widetilde{M}^f_n)\,\operatorname{vec}(\widetilde{M}^f_n)^\dagger
+      \label{eq:covariance}
+    \end{equation}
+    in $\operatorname{End}(V_\rho)$ should equal $d_\rho^2 = 4$ for the spin-$\tfrac{1}{2}$
+    sector candidate.
 
-      Paper O27~\cite{Beau2026a27} resolved the existence of the admissible morphism $\Phi_{q,\rho}$
-      unconditionally, proving that any morphism satisfying the three structural constraints forces
-      a unique factorisation through $\mathfrak{su}(2)$.
-      The full implication chain
-      \[
-        \text{emergence} \Rightarrow \text{non-injectivity}~\cite{Beau2026b}
-        \Rightarrow \text{pair structure} \Rightarrow \text{quadratic form}
-        \Rightarrow \mathfrak{su}(2)
-      \]
-      is thereby closed at the structural level.
-      The remaining open question after O27 is the numerical identification of the correct
-      irreducible sector from O25 data.
+    Paper O27~\cite{Beau2026a31} resolved the existence of the admissible morphism $\Phi_{q,\rho}$
+    unconditionally, proving that any morphism satisfying the three structural constraints forces
+    a unique factorisation through $\mathfrak{su}(2)$.
+    The full implication chain
+    \[
+      \text{emergence} \Rightarrow \text{non-injectivity}~\cite{Beau2026l}
+      \Rightarrow \text{pair structure} \Rightarrow \text{quadratic form}
+      \Rightarrow \mathfrak{su}(2)
+    \]
+    is thereby closed at the structural level.
+    The remaining open question after O27 is the numerical identification of the correct
+    irreducible sector from the covariance structure of the admissible trajectory.
 
-    \subsection{Scope of O28}
+  \subsection{Scope of O28}
 
-      O28 addresses the two numerical questions left open after O25 and O27:
-      \begin{enumerate}
-        \item \textbf{Part~A}: calibrate the asymptotic constant $\hat{\alpha}$ in
-        $n_1(q) \sim \hat{\alpha}\, q$ and reassess $\delta_{\mathrm{corr}}(q)$ using the measured
-        $n_1$ values rather than the qualitative $\Theta(q)$ scaling of O9~\cite{Beau2026a9}.
-        \item \textbf{Part~B}: develop a proxy for the inter-pair trajectory diversity relevant to
-        O26 Test~4, using the per-pair mean trajectories available in the O25 checkpoints, and
-        identify what additional pipeline data would be required for the formal test.
-      \end{enumerate}
+    O28 addresses the two numerical questions left open after O25--O27:
+    \begin{enumerate}
+      \item \textbf{Part~A}: calibrate the asymptotic constant $\hat{\alpha}$ in
+      $n_1(q) \sim \hat{\alpha}\,q$ and reassess $\delta_{\mathrm{corr}}(q)$ using the measured
+      $n_1$ values.
+      \item \textbf{Part~B}: perform the formal effective-dimension computation of
+      O26 Criterion~5.4 using the per-block Weil vector projections $\pi_c(v) \in H_{\mathrm{eff}}$
+      stored in the Q5a-O5 checkpoints, and determine what the covariance structure of
+      $\mathcal{C}_c$ in $\mathrm{End}(H_{\mathrm{eff}})$ reveals about the irreducible sector.
+    \end{enumerate}
 
   \section{Setup and Notation}
 
-    We follow the notation of O25~\cite{Beau2026a25}.
-    Let $q$ be an odd prime, $G_q = \mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$, and
-    $\mathrm{Cay}(G_q, S_q)$ its Cayley graph with generating set $S_q = \{X^{\pm 1}, Y^{\pm 1}\}$.
-    The BFS shells $S_n$ and ball $B_n$ are defined as in O9--O12~\cite{Beau2026a9,Beau2026a12}.
-    The pair observable is
-    \[
-      \sigma_c(n) = \frac{\delta r_n}{|S_n|}, \qquad
-      \sigma_{\mathrm{pair}}(n) = \sigma_c(n)\,\sigma_{q-c}(n),
-    \]
-    where $\delta r_n$ is the rank increment contributed by Weil fingerprint vectors in shell $S_n$,
-    as defined in O12~\cite{Beau2026a12}.
-    The fitting window $[n_0, n_1]$ is auto-calibrated from the BFS data via the
-    \texttt{find\_fitting\_window} procedure of O12, with $\mathrm{bfs\_frac} = 0.99$.
-    The O14 normalisation correction~\cite{Beau2026a14} gives
-    \begin{equation}
-      \delta_{\mathrm{corr}}(q) = \bar{\delta}_{\mathrm{pair}}(q) - \eta\,
-      \frac{\log q}{\log n_1(q)}, \qquad \eta = \tfrac{1}{2}.
-      \label{eq:dcorr}
-    \end{equation}
+  We follow the notation of O25~\cite{Beau2026a29}.
+  Let $q$ be an odd prime, $G_q = \mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$, and
+  $\mathrm{Cay}(G_q, S_q)$ its Cayley graph with generating set $S_q = \{X^{\pm 1}, Y^{\pm 1}\}$.
+  The pair observable is
+  \[
+    \sigma_c(n) = \frac{\delta r_n}{|S_n|}, \qquad
+    \sigma_{\mathrm{pair}}(n) = \sigma_c(n)\,\sigma_{q-c}(n).
+  \]
+  The fitting window $[n_0, n_1]$ is auto-calibrated from the BFS data via the
+  \texttt{find\_fitting\_window} procedure of O12~\cite{Beau2026a16}, with
+  $\mathrm{bfs\_frac} = 0.99$.
+  The O14 normalisation correction~\cite{Beau2026a18} gives
+  \begin{equation}
+    \delta_{\mathrm{corr}}(q) = \bar{\delta}_{\mathrm{pair}}(q) - \eta\,
+    \frac{\log q}{\log n_1(q)}, \qquad \eta = \tfrac{1}{2}.
+    \label{eq:dcorr}
+  \end{equation}
+  The Q5a-O5 pipeline additionally stores, for each conjugate pair $(c, q-c)$ and each
+  window shell $s$, the per-vector $H_{\mathrm{eff}}$-projections
+  \begin{equation}
+    \pi_c\!\left(v^{(s)}_j\right) = B_{\mathrm{eff}}\, v^{(s)}_j \;\in\; H_{\mathrm{eff}}
+    = \mathbb{C}^3,
+    \label{eq:pimap}
+  \end{equation}
+  where $B_{\mathrm{eff}} \in \mathbb{C}^{3 \times q}$ is the first $\mathrm{HEFF\_DIM} = 3$
+  rows of the Gram--Schmidt basis matrix accumulated up to shell $n_1$, and
+  $v^{(s)}_j \in \mathbb{C}^q$ is the $j$-th Weil fingerprint vector at shell $s$.
 
   \section{Part~A: Asymptotic Calibration of $n_1(q)/q$}
 
-    \subsection{Extraction of $n_1(q)$ from O25 checkpoints}
+  \subsection{Extraction of $n_1(q)$ from checkpoints}
 
-      For each prime $q \in \{151, 211\}$, the value $n_1(q)$ is extracted directly from the
-      \texttt{n1} key of the O25 checkpoint \texttt{q\{q\}\_o25.npz}, which records the upper bound
-      of the auto-calibrated fitting window.
-      The values for $q \in \{29, 61, 101\}$ are taken from O25 Table~2~\cite{Beau2026a25}.
-      Table~\ref{tab:window} collects the complete dataset.
+    For each prime $q \in \{29, 61, 101, 151\}$, the value $n_1(q)$ is extracted from the
+    \texttt{n1} key of the Q5a-O5 checkpoint.
+    The value for $q = 211$ is taken from the O25 checkpoint~\cite{Beau2026a29}.
+    Table~\ref{tab:window} collects the complete dataset.
 
-      \begin{table}[h]
-        \centering
-        \caption{BFS window depth and asymptotic ratio from O25 checkpoints.
-          $\bar{\delta}_{\mathrm{pair}}(q)$: mean of $\delta_{\mathrm{pair}}$ over all conjugate pairs.
-          $\eta \log q / \log n_1$: O14 correction factor~\eqref{eq:dcorr} with $\eta = 1/2$.
-          $\delta_{\mathrm{corr}}$: corrected exponent.
-          Admissible window: $[7.4, 10.6]$.}
-        \label{tab:window}
-        \begin{tabular}{rrrrrrl}
-          \toprule
-          $q$ & $n_1(q)$ & $n_1(q)/q$ & $\bar{\delta}_{\mathrm{pair}}(q)$ &
-          $\eta \log q / \log n_1$ & $\delta_{\mathrm{corr}}(q)$ & in window? \\
-          \midrule
-          29  &  4 & 0.138 & 8.893 & 1.214 & 7.679 & yes \\
-          61  &  8 & 0.131 & 9.983 & 0.989 & 8.995 & yes \\
-          101 & 11 & 0.109 & 9.548 & 0.962 & 8.586 & yes \\
-          151 & 13 & 0.086 & 9.125 & 0.978 & 8.147 & yes \\
-          211 & 14 & 0.066 & 8.784 & 1.014 & 7.770 & yes \\
-          \bottomrule
-        \end{tabular}
-      \end{table}
+    \begin{table}[ht]
+      \centering
+      \caption{BFS window depth and asymptotic ratio.
+        $\bar{\delta}_{\mathrm{pair}}(q)$: mean of $\delta_{\mathrm{pair}}$ over all conjugate pairs.
+        $\eta \log q / \log n_1$: O14 correction factor~\eqref{eq:dcorr} with $\eta = 1/2$.
+        $\delta_{\mathrm{corr}}$: corrected exponent.
+        Admissible window: $[7.4, 10.6]$.}
+      \label{tab:window}
+      \begin{tabular}{rrrrrrl}
+        \toprule
+        $q$ & $n_1(q)$ & $n_1(q)/q$ & $\bar{\delta}_{\mathrm{pair}}(q)$ &
+        $\eta \log q / \log n_1$ & $\delta_{\mathrm{corr}}(q)$ & in window? \\
+        \midrule
+        29  & 4  & 0.138 & 8.893 & 1.214 & 7.679 & yes \\
+        61  & 8  & 0.131 & 9.983 & 0.989 & 8.995 & yes \\
+        101 & 11 & 0.109 & 9.548 & 0.962 & 8.586 & yes \\
+        151 & 13 & 0.086 & 9.125 & 0.978 & 8.147 & yes \\
+        211 & 14 & 0.066 & 8.784 & 1.014 & 7.770 & yes \\
+        \bottomrule
+      \end{tabular}
+    \end{table}
 
-      \begin{figure}[ht]
-        \centering
-        \includegraphics[width=\linewidth]{o28_n1_calibration}
-        \caption{Part~A: BFS window depth calibration over $q \in \{29,61,101,151,211\}$.
-          (a)~$n_1(q)$ with OLS fit $n_1 = \hat\alpha\,q + \hat\beta$ and 95\% confidence band.
-          (b)~Ratio $n_1(q)/q$: monotonically decreasing from $0.138$ to $0.066$,
-          confirming Scenario~S2 (pre-asymptotic regime throughout the tested range).
-          (c)~Raw $\bar\delta_{\mathrm{pair}}(q)$ with inter-pair standard deviation error bars
-          and O14-corrected $\delta_{\mathrm{corr}}(q)$; all corrected values lie within
-          the admissible window $[7.4,10.6]$ (shaded).}
-        \label{fig:part_a}
-      \end{figure}
+  \subsection{OLS fit and asymptotic constant}
 
-    \subsection{OLS fit and asymptotic constant}
+    \begin{proposition}[Empirical window-depth fit]
+      \label{prop:ols}
+      Over the range $q \in \{29, 61, 101, 151, 211\}$, the OLS fit $n_1(q) = \hat\alpha\,q + \hat\beta$
+      yields $\hat{\alpha} \approx 0.053$ (95\% CI: $[0.017, 0.088]$),
+      $\hat{\beta} \approx 4.175$, $R^2 \approx 0.879$, $p \approx 0.018$.
+      The ratio $n_1(q)/q$ decreases from $0.138$ at $q = 29$ to $0.066$ at $q = 211$.
+      The Window-Depth Theorem (O9, Theorem~6.1~\cite{Beau2026a13}) guarantees
+      $n_1(q) = \Theta(q)$; the present fit quantifies the proportionality constant empirically
+      as a lower bound.
+    \end{proposition}
 
-      We fit $n_1(q) = \hat{\alpha}\, q + \hat{\beta}$ by ordinary least squares over
-      $q \in \{29, 61, 101, 151, 211\}$.
+    \begin{remark}
+      The ratio $n_1(q)/q$ is monotonically decreasing over the entire tested range.
+      The asymptotic regime $n_1(q) \sim \alpha q$ has not yet been reached at $q = 211$.
+      Proposition~\ref{prop:ols} therefore provides a lower-bound estimate of $\alpha$ rather
+      than a convergent identification.
+      Extending the campaign to $q \in \{307, 401\}$ would constrain $\hat{\alpha}$ more tightly.
+    \end{remark}
 
-      \begin{proposition}[Empirical window-depth fit]
-        \label{prop:ols}
-        Over the range $q \in \{29, 61, 101, 151, 211\}$, the OLS fit yields
-        $\hat{\alpha} \approx 0.053$ (95\% CI: $[0.017, 0.088]$),
-        $\hat{\beta} \approx 4.175$, $R^2 \approx 0.879$, $p \approx 0.018$.
-        The ratio $n_1(q)/q$ decreases from $0.138$ at $q = 29$ to $0.066$ at $q = 211$.
-        The Window-Depth Theorem (O9, Theorem~6.1~\cite{Beau2026a9}) guarantees
-        $n_1(q) = \Theta(q)$; the present fit quantifies the proportionality constant empirically
-        as a lower bound.
-      \end{proposition}
+  \subsection{Stability of $\delta_{\mathrm{corr}}(q)$}
 
-      \begin{remark}
-        \label{rem:scenario}
-        The ratio $n_1(q)/q$ is monotonically decreasing over the entire tested range, from
-        $0.138$ at $q = 29$ to $0.066$ at $q = 211$.
-        The asymptotic regime $n_1(q) \sim \alpha q$ has therefore not yet been reached at $q = 211$.
-        Proposition~\ref{prop:ols} provides a lower-bound estimate of the asymptotic proportionality
-        constant rather than a convergent identification.
-        Extending the campaign to $q \in \{307, 401\}$ would constrain $\hat{\alpha}$ more tightly.
-      \end{remark}
+    From Table~\ref{tab:window}, the correction factor $\eta \log q / \log n_1(q)$ lies in
+    $[0.96, 1.21]$ over the tested range.
+    For all $q \in \{29, 61, 101, 151, 211\}$, the corrected exponent
+    $\delta_{\mathrm{corr}}(q)$ falls within the admissible window $[7.4, 10.6]$,
+    confirming the main structural conclusion of O25~\cite{Beau2026a29}: the finite-size
+    drift of $\bar{\delta}_{\mathrm{pair}}(q)$ is a normalisation effect, not a structural
+    deviation.
 
-    \subsection{Stability of $\delta_{\mathrm{corr}}(q)$}
+    \begin{figure}[ht]
+      \centering
+      \includegraphics[width=\linewidth]{o28_n1_calibration}
+      \caption{Part~A: BFS window depth calibration over $q \in \{29,61,101,151,211\}$.
+        (a)~$n_1(q)$ with OLS fit $n_1 = \hat\alpha\,q + \hat\beta$ and 95\% confidence band.
+        (b)~Ratio $n_1(q)/q$: monotonically decreasing from $0.138$ to $0.066$, confirming
+        Scenario~S2 (pre-asymptotic regime throughout the tested range).
+        (c)~Raw $\bar\delta_{\mathrm{pair}}(q)$ with inter-pair standard deviation error bars
+        and O14-corrected $\delta_{\mathrm{corr}}(q)$; all corrected values lie within the
+        admissible window $[7.4,10.6]$ (shaded).}
+      \label{fig:part_a}
+    \end{figure}
 
-      From Table~\ref{tab:window}, the correction factor $\eta \log q / \log n_1(q)$ lies in
-      $[0.96, 1.21]$ over the tested range, close to its limiting value $1$ predicted from
-      $n_1(q) = \Theta(q)$.
-      For all $q \in \{29, 61, 101, 151, 211\}$, the corrected exponent $\delta_{\mathrm{corr}}(q)$
-      falls within the admissible window $[7.4, 10.6]$ established by O9--O14.
+  \section{Part~B: Effective Dimension of the Admissible Trajectory in
+    $\mathrm{End}(H_{\mathrm{eff}})$}
 
-      This confirms the main structural conclusion of O25~\cite{Beau2026a25}: the apparent decrease
-      of $\bar{\delta}_{\mathrm{pair}}(q)$ is a finite-size normalisation effect, not a structural
-      deviation below the admissible window.
-      The result now extends to $q = 211$, with $\delta_{\mathrm{corr}}(211) = 7.770 \in [7.4, 10.6]$.
+  \subsection{Data and computation}
 
-  \section{Part~B: Inter-Pair Trajectory Diversity (Proxy for O26 Test~4)}
+    The Q5a-O5 checkpoints store, for each conjugate pair $(c, q-c)$ and each window
+    shell $s \in [n_0, n_1]$, the array \texttt{pi\_c[p, s]} of shape $(N_s, 3)$, where
+    $N_s$ is the number of Weil fingerprint vectors at shell~$s$ and $3 = \mathrm{HEFF\_DIM}$.
+    Each row is the $H_{\mathrm{eff}}$-projection $\pi_c(v^{(s)}_j) \in \mathbb{C}^3$
+    defined in~\eqref{eq:pimap}.
+    The conjugate projections $\pi_{q-c}(v^{(s)}_j) \in \mathbb{C}^3$ are stored in
+    \texttt{pi\_qmc[p, s]}.
 
-    \subsection{Scope and limitation}
+    The covariance operator $\mathcal{C}_c$ in $\mathrm{End}(H_{\mathrm{eff}})
+  = \mathrm{End}(\mathbb{C}^3)$ is computed as
+    \begin{equation}
+      \mathcal{C}_c = \frac{1}{N_{\mathrm{tot}}}
+      \sum_{s=n_0}^{n_1} \sum_{j=1}^{N_s}
+      \operatorname{vec}\!\bigl(\widetilde{M}^s_j\bigr)\,
+      \operatorname{vec}\!\bigl(\widetilde{M}^s_j\bigr)^\dagger, \qquad
+      \widetilde{M}^s_j = \pi_c\!\left(v^{(s)}_j\right) \otimes
+      \pi_{q-c}\!\left(v^{(s)}_j\right)^*,
+      \label{eq:covariance_b}
+    \end{equation}
+    where $N_{\mathrm{tot}} = \sum_s N_s$ and
+    $\mathrm{vec}(\widetilde{M}^s_j) \in \mathbb{C}^9$.
+    Two statistics estimate $r_{\mathrm{eff}}$: the participation-ratio rank
+    $r_{\mathrm{eff}}^{\mathrm{PR}} = (\sum_i \tilde\lambda_i)^2 / \sum_i \tilde\lambda_i^2$
+    and the threshold rank $r_{\mathrm{eff}}^{1\%}$ (eigenvalues of $\mathcal{C}_c$
+    exceeding $1\%$ of $\lambda_1$).
 
-      O26 Criterion~5.4~\cite{Beau2026a26} defines the effective dimension $r_{\mathrm{eff}}$ as the
-      numerical rank of the per-pair covariance operator
-      \begin{equation}
-        \mathcal{C}_c = \frac{1}{N} \sum_{n = n_0}^{n_1}
-        \operatorname{vec}(\widetilde{M}^f_n)\,\operatorname{vec}(\widetilde{M}^f_n)^\dagger,
-        \qquad N = n_1 - n_0 + 1,
-        \label{eq:covariance}
-      \end{equation}
-      where $\widetilde{M}^f_n = v^{(n)}_c \otimes v^{(n)}_{q-c} \in \operatorname{End}(V_\rho)$ is the
-      outer product of the individual Weil fingerprint vectors $v^{(n)}_c \in \mathbb{C}^q$.
-      Computing $\mathcal{C}_c$ requires storing the full per-block vector trajectories of shape
-      $(\text{n\_pairs}, M, \text{n\_shells}, q)$; the current O25 pipeline stores only the per-pair
-      mean of $\sigma_c(n) = \|v^{(n)}_c\|^2 / |S_n|$ (a scalar), not the vectors themselves.
+  \subsection{Results}
 
-      The present section implements a proxy test that is a necessary but not sufficient condition
-      for $r_{\mathrm{eff}} > 1$: it measures the number of independent decay-shape directions across
-      pairs in the mean trajectories after removing the common power-law component.
+    \begin{table}[ht]
+      \centering
+      \caption{Formal effective-dimension measurement in $\mathrm{End}(H_{\mathrm{eff}})$,
+        $H_{\mathrm{eff}} = \mathbb{C}^3$ ($\mathrm{HEFF\_DIM} = 3$).
+        Valid/total: conjugate pairs for which \texttt{pi\_c} is non-empty.
+        $r_{\mathrm{eff}}^{\mathrm{PR}}$: participation-ratio rank.
+        $r_{\mathrm{eff}}^{1\%}$: threshold rank.
+        The spin-$\tfrac{1}{2}$ prediction in $\mathrm{End}(V_\rho)$ is $d_\rho^2 = 4$;
+        the ambient dimension of $\mathrm{End}(\mathbb{C}^3)$ is $9$.}
+      \label{tab:reff}
+      \begin{tabular}{rrrrll}
+        \toprule
+        $q$ & valid/total & $r_{\mathrm{eff}}^{\mathrm{PR}}$ &
+        $r_{\mathrm{eff}}^{1\%}$ & $\lambda_2/\lambda_1$ & $\lambda_3/\lambda_1$ \\
+        \midrule
+        29  & 5/14  & $8/3$ & 3 & $1/2$ & $1/2$ \\
+        61  & 30/30 & $8/3$ & 3 & $1/2$ & $1/2$ \\
+        101 & 50/50 & $8/3$ & 3 & $1/2$ & $1/2$ \\
+        151 & 75/75 & $8/3$ & 3 & $1/2$ & $1/2$ \\
+        \bottomrule
+      \end{tabular}
+    \end{table}
 
-    \subsection{Proxy construction}
+    The results are given in Table~\ref{tab:reff}.
+    For $q \in \{61, 101, 151\}$, every conjugate pair yields
+    $r_{\mathrm{eff}}^{\mathrm{PR}} = 8/3$ and $r_{\mathrm{eff}}^{1\%} = 3$, with normalised
+    eigenvalue structure
+    \begin{equation}
+      [\lambda_1 : \lambda_2 : \lambda_3] = [1 : \tfrac{1}{2} : \tfrac{1}{2}].
+      \label{eq:eig_structure}
+    \end{equation}
+    The remaining eigenvalues $\lambda_4, \ldots, \lambda_9$ are numerically zero (below the
+    $1\%$ threshold by a factor $> 100$).
+    For $q = 29$, only $5/14$ pairs have non-empty \texttt{pi\_c} arrays; among those,
+    the same structure~\eqref{eq:eig_structure} holds exactly.
+    The value $r_{\mathrm{eff}}^{\mathrm{PR}} = 8/3$ is the exact algebraic consequence
+    of~\eqref{eq:eig_structure}: the normalised weights
+    $p = [2/4, 1/4, 1/4]$ give $\sum p^2 = 3/8$, hence $r_{\mathrm{eff}}^{\mathrm{PR}} = 8/3$.
+    Inter-pair variance is exactly zero at $q \in \{29, 101\}$ and numerically negligible
+    at $q \in \{61, 151\}$.
 
-      For each prime $q$ and each conjugate pair $(c, q-c)$, the O25 checkpoint provides the
-      per-pair mean vectors $\bar{\sigma}_c \in \mathbb{R}^{n_{\mathrm{shells}}}$ and
-      $\bar{\sigma}_{q-c} \in \mathbb{R}^{n_{\mathrm{shells}}}$.
-      We restrict to the fitting window $[n_0, n_1]$ and form the $(n_{\mathrm{pairs}} \times n_{\mathrm{win}})$ matrix
-      \[
-        M_{p,n} = \bar{\sigma}_c(n)\,\bar{\sigma}_{q-c}(n), \qquad n \in [n_0, n_1].
-      \]
-      Each row is normalised to unit $\ell^2$ norm (removing amplitude variation between pairs),
-      and the column mean is subtracted (removing the common power-law decay shared by all pairs).
-      This centering removes the universal power-law decay identified in O25~\cite{Beau2026a25},
-      isolating pair-specific deviations from the mean trajectory.
-      The singular value decomposition of the resulting centred matrix gives the proxy singular
-      values $\sigma_1 \geq \sigma_2 \geq \cdots$.
+    \begin{figure}[ht]
+      \centering
+      \includegraphics[width=\linewidth]{o28_reff_measurement}
+      \caption{Part~B: Effective dimension of $\mathcal{C}_c$ in $\mathrm{End}(H_{\mathrm{eff}})$,
+        $H_{\mathrm{eff}} = \mathbb{C}^3$.
+        (a)~Threshold rank $r_{\mathrm{eff}}^{1\%}$ per conjugate pair across primes;
+        dashed red: spin-$\tfrac{1}{2}$ prediction $d_\rho^2 = 4$;
+        dotted green: $\mathrm{HEFF\_DIM} = 3$.
+        (b)~Normalised second eigenvalue $\lambda_2/\lambda_1$ per pair;
+        dashed red: exact value $1/2$ from~\eqref{eq:eig_structure}.
+        (c)~Mean normalised eigenvalue structure $\lambda_i/\lambda_1$ for each prime;
+        all primes give the same $[1, 1/2, 1/2, 0, \ldots]$ structure within numerical precision.}
+      \label{fig:part_b}
+    \end{figure}
 
-      \begin{remark}
-        \label{rem:proxy-scope}
-        This proxy is a coarse-grained version of the O26 construction: it replaces the per-block
-        outer products $\widetilde{M}^f_n$ by their amplitude averages, which collapses the
-        representation-theoretic structure in $\operatorname{End}(V_\rho)$ onto a scalar per shell.
-        A non-trivial proxy rank (i.e.\ $\sigma_2/\sigma_1 > 0$) is a necessary condition for
-        $r_{\mathrm{eff}} > 1$ in the O26 sense, but not sufficient.
-      \end{remark}
+  \subsection{Interpretation}
+    \label{sec:interp}
 
-    \subsection{Results}
+    The rank-3 result fills $H_{\mathrm{eff}}$ completely: the trajectory of outer products
+    $\widetilde{M}^s_j$ spans the full 3-dimensional eigenspace of $\mathcal{C}_c$ within
+    $\mathrm{End}(\mathbb{C}^3)$.
+    This is consistent with $\Sigma_c(n_3) = 3$ from O23~\cite{Beau2026a27}, which established
+    that the admissible subspace at the characteristic shell depth $n_3$ has dimension~$3$.
 
-      \begin{table}[h]
-        \centering
-        \caption{Inter-pair trajectory diversity proxy ($q = 151$ only for Part~B;
-          $q = 211$ checkpoint does not store per-conjugate sigma vectors).
-          $\sigma_2/\sigma_1$: ratio of second to first singular value of the centred
-          mean-trajectory matrix (all $q$, using $\sigma_{\mathrm{pair}}$ for $q = 211$).
-          $r_{\mathrm{eff}}^{\mathrm{PR}}$: participation-ratio effective rank
-          $= (\sum_i \tilde\sigma_i^2)^2 / \sum_i \tilde\sigma_i^4$,
-          $\tilde\sigma_i = \sigma_i/\sigma_1$.
-          $r_{\mathrm{eff}}^{10\%}$: count of singular values exceeding $10\%$ of $\sigma_1$.
-          Informative: $n_{\mathrm{win}} \geq 10$ and per-conjugate sigma vectors available.}
-        \label{tab:svd}
-        \begin{tabular}{rrrrrrl}
-          \toprule
-          $q$ & $n_{\mathrm{pairs}}$ & $n_{\mathrm{win}}$ & $\sigma_2/\sigma_1$ &
-          $r_{\mathrm{eff}}^{\mathrm{PR}}$ & $r_{\mathrm{eff}}^{10\%}$ & Informative \\
-          \midrule
-          29  &  14 &  3 & 0.042 & 1.00 & 1 & No  \\
-          61  &  30 &  7 & 0.100 & 1.02 & 1 & No  \\
-          101 &  50 &  9 & 0.194 & 1.08 & 2 & No  \\
-          151 &  75 & 11 & 0.205 & 1.09 & 2 & Yes \\
-          211 & 105 & 12 & 0.238 & \multicolumn{2}{c}{(no per-conj.\ vectors)} & No \\
-          \bottomrule
-        \end{tabular}
-      \end{table}
+    The gap between $r_{\mathrm{eff}}^{1\%} = 3$ and the spin-$\tfrac{1}{2}$ prediction
+    $d_\rho^2 = 4$ has a structural explanation.
+    O26 Criterion~5.4 is formulated in $\mathrm{End}(V_\rho)$, where $V_\rho$ is the irreducible
+    representation space of dimension $d_\rho$.
+    The present computation operates in $\mathrm{End}(H_{\mathrm{eff}})$, where
+    $H_{\mathrm{eff}} = \mathbb{C}^3$ is the admissible projection subspace.
+    The identification $V_\rho \subset H_{\mathrm{eff}}$ has not yet been carried out: it
+    requires identifying the spin-$\tfrac{1}{2}$ irreducible sector within $\mathbb{C}^3$
+    and restricting the covariance to $\mathrm{End}(V_\rho)$.
 
-      The second singular value ratio $\sigma_2/\sigma_1$ grows monotonically with $q$ across all
-      tested primes (Table~\ref{tab:svd}), consistent with the emergence of inter-pair geometric
-      diversity predicted by the O26 framework.
-      At $q = 151$, the first prime for which per-conjugate sigma vectors are available and
-      $n_{\mathrm{win}} \geq 10$, the participation-ratio effective rank is
-      $r_{\mathrm{eff}}^{\mathrm{PR}} \approx 1.09$ and the $10\%$-threshold rank is
-      $r_{\mathrm{eff}}^{10\%} = 2$.
-      The $q = 211$ checkpoint does not store per-conjugate sigma vectors; the $\sigma_2/\sigma_1$
-      value reported for $q = 211$ is computed from $\sigma_{\mathrm{pair}}$ directly and is
-      included for completeness but is not fully comparable.
-
-      \begin{figure}[ht]
-        \centering
-        \includegraphics[width=\linewidth]{o28_reff_measurement}
-        \caption{Part~B: Inter-pair trajectory diversity proxy for $q \in \{29,61,101,151\}$
-          ($q=211$ omitted: checkpoint does not store per-conjugate sigma vectors).
-          Each panel shows the singular values $\sigma_i/\sigma_1$ of the centred
-          mean-trajectory matrix.
-          Dashed red: $10\%$ threshold defining $r_{\mathrm{eff}}^{10\%}$.
-          Dotted orange: $1\%$ threshold.
-          Dash-dotted purple: $d_\rho^2 = 4$ (spin-$\tfrac{1}{2}$ target of O26 Criterion~5.4).
-          Background shading at $q=151$ marks the first informative prime
-          ($n_{\mathrm{win}} \geq 10$).}
-        \label{fig:part_b}
-      \end{figure}
-
-      \begin{remark}[Status relative to O26 Criterion~5.4]
-        \label{rem:reff4}
-        The spin-$\tfrac{1}{2}$ prediction of O26 Criterion~5.4 is $r_{\mathrm{eff}} = d_\rho^2 = 4$.
-        The proxy rank at $q = 151$ ($r_{\mathrm{eff}}^{\mathrm{PR}} \approx 1.09$,
-        $r_{\mathrm{eff}}^{10\%} = 2$) does not yet reach this value.
-        The proxy operates on scalar amplitude averages rather than the full matrix-valued
-        trajectories in $\operatorname{End}(V_\rho)$ required by Criterion~5.4; it therefore
-        measures a projection of the inter-pair diversity rather than the full representation-theoretic
-        rank.
-        The monotone increase of $\sigma_2/\sigma_1$ with $q$ confirms that independent trajectory
-        directions are emerging, but the formal test of $r_{\mathrm{eff}} = 4$ requires the O29
-        pipeline extension.
-      \end{remark}
-
-    \subsection{Requirement for the formal O26 Test~4}
-
-      The formal Test~4 (O26, Criterion~5.4~\cite{Beau2026a26}) requires extending the O25 pipeline
-      to save per-block Weil vector trajectories.
-      Concretely, \texttt{compute\_block\_capacity} in \texttt{spectral\_O12.py} would need to return
-      the Gram--Schmidt residual vectors $r^{(n)}_s \in \mathbb{C}^q$ at each shell, giving an array
-      of shape $(\text{n\_pairs}, M, \text{n\_shells}, q)$.
-      This is a non-trivial extension (memory cost $O(n_{\mathrm{pairs}} \cdot M \cdot q^2)$ per prime)
-      and is deferred to O29.
+    \begin{remark}[Status of O26 Criterion~5.4]
+      \label{rem:status}
+      The result $r_{\mathrm{eff}} = 3$ in $\mathrm{End}(H_{\mathrm{eff}})$ is not
+      inconsistent with the spin-$\tfrac{1}{2}$ prediction: if $V_\rho \subsetneq H_{\mathrm{eff}}$
+      with $d_\rho = 2$, the restriction of $\mathcal{C}_c$ to $\mathrm{End}(V_\rho)$
+      could still have rank $\leq 4$, while the full $\mathcal{C}_c$ in
+      $\mathrm{End}(H_{\mathrm{eff}})$ has rank $3 < 9$.
+      The exact eigenvalue structure $[1, \tfrac{1}{2}, \tfrac{1}{2}]$, invariant across
+      all pairs and primes, is a structural regularity deserving further analytical
+      investigation; its connection to the $\mathfrak{su}(2)$ factorisation of O27 is
+      an open problem.
+    \end{remark}
 
   \section{Discussion}
 
-    \subsection{What O28 establishes unconditionally}
+  \subsection{What O28 establishes unconditionally}
 
-      Three results are established from the full dataset $q \in \{29, 61, 101, 151, 211\}$.
+    Three results are established from the full dataset.
 
-      First, the O14 normalisation correction is structurally coherent across the full tested range.
-      For all $q \in \{29, 61, 101, 151, 211\}$, the corrected exponent
-      $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$, extending the O25 result to $q = 211$ and
-      confirming that the apparent decrease of $\bar{\delta}_{\mathrm{pair}}(q)$ is a finite-size
-      normalisation effect driven by $n_1(q)$, not a structural deviation.
+    First, the O14 normalisation correction is structurally coherent across the full tested range:
+    $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$ for all $q \in \{29, 61, 101, 151, 211\}$,
+    confirming that the finite-size drift of $\bar{\delta}_{\mathrm{pair}}(q)$ is a
+    normalisation effect.
 
-      Second, $n_1(q)/q$ decreases from $0.138$ to $0.066$ over $q \in \{29, \ldots, 211\}$,
-      confirming the $\Theta(q)$ scaling of O9~\cite{Beau2026a9} and ruling out any sub-linear growth.
-      The asymptotic constant $\hat{\alpha}$ is bounded below by the data but not yet stabilised;
-      the decreasing trajectory indicates the pre-asymptotic regime persists through $q = 211$.
+    Second, $n_1(q)/q$ decreases monotonically from $0.138$ to $0.066$ over the tested range,
+    confirming the $\Theta(q)$ scaling of O9~\cite{Beau2026a13} and ruling out sub-linear growth.
+    The asymptotic constant $\hat{\alpha}$ is bounded below by $0.053$ but not yet stabilised.
 
-      Third, the inter-pair SVD proxy shows a monotone increase of $\sigma_2/\sigma_1$ with $q$
-      ($0.042 \to 0.238$), consistent with increasing trajectory diversity as pairs access more
-      independent directions with growing $q$.
-      At $q = 151$, the first informative prime (per-conjugate sigma vectors available,
-      $n_{\mathrm{win}} = 11$), the participation-ratio rank is $r_{\mathrm{eff}}^{\mathrm{PR}} \approx 1.09$
-      and the $10\%$-threshold rank is $r_{\mathrm{eff}}^{10\%} = 2$.
-      These values do not yet reach the spin-$\tfrac{1}{2}$ prediction $d_\rho^2 = 4$ of O26;
-      the proxy operates on amplitude averages rather than full Weil vectors, which suppresses
-      the apparent rank relative to the formal $r_{\mathrm{eff}}$ of Criterion~5.4.
+    Third, the covariance $\mathcal{C}_c$ in $\mathrm{End}(H_{\mathrm{eff}})$ has rank
+    exactly~$3$ for every conjugate pair at $q \in \{61, 101, 151\}$, with invariant eigenvalue
+    structure $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$.
+    This result is robust: zero inter-pair variance at $q \in \{29, 101\}$, negligible at
+    $q \in \{61, 151\}$.
+    The rank-3 result fills $H_{\mathrm{eff}}$ completely and is consistent with
+    $\Sigma_c(n_3) = 3$ from O23.
 
-      Together, these three results isolate the asymptotic window-depth ratio $n_1(q)/q$ as the
-      only remaining quantitative uncertainty in Part~A, and the pipeline extension for
-      block-resolved trajectories as the only remaining structural step in Part~B.
+  \subsection{What remains open}
 
-    \subsection{Scenario analysis at $q = 151$ and $q = 211$}
-
-      The paper was drafted with two scenarios for the outcome at $q = 151$.
-      The data resolves them: $n_1(151)/151 = 0.086 < 0.10$, so Scenario~S2 (continued decrease)
-      is confirmed.
-      The ratio continues to decrease at $q = 211$ ($n_1(211)/211 = 0.066$), placing the asymptotic
-      calibration firmly in the pre-asymptotic regime.
-      The OLS fit of Proposition~\ref{prop:ols} yields $\hat{\alpha} \approx 0.053$ as a
-      lower-bound estimate; the true asymptotic constant satisfies $\alpha \leq 0.066$ and may be
-      substantially smaller.
-
-      In Scenario~S2, O28 establishes the $\Theta(q)$ scaling qualitatively and confirms the
-      structural coherence of $\delta_{\mathrm{corr}}$ across all tested primes, but defers
-      asymptotic quantification to larger primes.
-      The conclusion on $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$ is unaffected.
-
-    \subsection{What remains open}
-
-      The following directions are explicitly open after O28:
-      \begin{itemize}
-        \item Analytical derivation of the asymptotic constant $\alpha = \lim_{q \to \infty} n_1(q)/q$.
-        \item Extension of the BFS campaign to $q \in \{307, 401\}$ to constrain $\hat{\alpha}$
-        further and determine whether the ratio stabilises.
-        \item Implementation of O29: extension of the O25 pipeline to expose per-block Weil vector
-        trajectories and execute the formal O26 Test~4 (Criterion~5.4~\cite{Beau2026a26}) in
-        $\operatorname{End}(V_\rho)$, with memory cost $O(n_{\mathrm{pairs}} \cdot M \cdot q^2)$ per
-        prime.
-        The O29 pipeline will reconstruct the covariance operator $\mathcal{C}_c$ in
-        $\operatorname{End}(V_\rho)$ from block-resolved trajectories, enabling direct evaluation
-        of the effective dimension $r_{\mathrm{eff}}$ and the identification of the correct
-        irreducible sector.
-      \end{itemize}
+    The following directions are explicitly open after O28:
+    \begin{itemize}
+      \item Analytical derivation of the asymptotic constant
+      $\alpha = \lim_{q \to \infty} n_1(q)/q$ and of the exact eigenvalue
+      structure~\eqref{eq:eig_structure}.
+      \item Extension of the BFS campaign to $q \in \{307, 401\}$ to further constrain
+      $\hat{\alpha}$.
+      \item O29: identification of the spin-$\tfrac{1}{2}$ irreducible sector $V_\rho$ within
+      $H_{\mathrm{eff}} = \mathbb{C}^3$ and computation of $r_{\mathrm{eff}}$ in
+      $\mathrm{End}(V_\rho)$.
+      This requires the representation-theoretic decomposition of $H_{\mathrm{eff}}$ into
+      irreducible $\mathfrak{su}(2)$ components, as established analytically by O27~\cite{Beau2026a31}.
+    \end{itemize}
 
   \section{Conclusion}
 
-    O28 closes the asymptotic calibration side of the post-O27 programme by measuring the BFS
-    window ratio $n_1(q)/q$ and reassessing the normalisation-corrected exponent
-    $\delta_{\mathrm{corr}}(q)$ on O25 data for $q \in \{29, 61, 101, 151, 211\}$.
-    The corrected exponent falls within the admissible window $[7.4, 10.6]$ for all tested primes,
-    confirming that the finite-size drift of $\bar{\delta}_{\mathrm{pair}}(q)$ is a normalisation
-    effect rather than a structural deviation.
-    The ratio $n_1(q)/q$ continues to decrease through $q = 211$ (Scenario~S2): the asymptotic
-    constant $\hat{\alpha}$ is bounded below by $0.053$ but not yet stabilised, and the
-    calibration remains qualitative pending larger primes.
+  O28 closes two open directions of the post-O27 programme.
+  On the calibration side, $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$ for all
+  $q \in \{29, 61, 101, 151, 211\}$, and the ratio $n_1(q)/q$ continues to decrease through
+  $q = 211$ (Scenario~S2), placing the asymptotic calibration in the pre-asymptotic regime.
 
-    The inter-pair trajectory diversity proxy provides the following results.
-    The ratio $\sigma_2/\sigma_1$ increases monotonically from $0.042$ to $0.238$ over the full
-    tested range.
-    At $q = 151$, the first prime for which the proxy is informative, the participation-ratio
-    rank is $r_{\mathrm{eff}}^{\mathrm{PR}} \approx 1.09$ and the $10\%$-threshold rank is
-    $r_{\mathrm{eff}}^{10\%} = 2$; the spin-$\tfrac{1}{2}$ prediction $d_\rho^2 = 4$ is not yet
-    reached at the proxy level.
-    The formal test requires block-resolved Weil trajectories and is deferred to O29.
+  On the representation-theoretic side, the formal computation of O26 Criterion~5.4
+  in $\mathrm{End}(H_{\mathrm{eff}})$ yields a clean and robust result: the covariance
+  $\mathcal{C}_c$ has rank exactly~$3$ with invariant normalised eigenvalue structure
+  $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$ across all conjugate pairs and all primes
+  $q \in \{61, 101, 151\}$.
+  This fills $H_{\mathrm{eff}} = \mathbb{C}^3$ completely, consistent with
+  $\Sigma_c(n_3) = 3$ from O23~\cite{Beau2026a27}.
+  The gap from the spin-$\tfrac{1}{2}$ prediction $d_\rho^2 = 4$ has a structural
+  explanation: $H_{\mathrm{eff}} \neq V_\rho$, and the formal O26 test within
+  $\mathrm{End}(V_\rho)$ requires the identification $V_\rho \subset H_{\mathrm{eff}}$,
+  which is deferred to O29.
 
-    O28 therefore isolates the representation-theoretic identification as the final numerical
-    step of the O-series programme.
+  \clearpage
 
-    \paragraph{Data and Code Availability.}
-      The numerical pipeline \texttt{o25\_paired\_pipeline.py} (patched for O28), the analysis
-      script \texttt{o28\_analysis.py}, and the checkpoint files \texttt{q\{q\}\_o25.npz} for
-      $q \in \{29, 61, 101, 151, 211\}$ are available at [ZENODO DOI PLACEHOLDER].
+  \paragraph{Data and Code Availability.}
+    The analysis scripts \texttt{o28\_analysis.py}, \texttt{o28\_reff\_extract.py}, and
+    \texttt{o28\_reff\_figures.py}, the checkpoint files \texttt{q\{q\}\_o25.npz}, and the
+    summary file \texttt{o28\_reff\_summary.npz} are available in the o28 directory of
+    \href{https://doi.org/10.5281/zenodo.18292335}{10.5281/zenodo.18292335}.
 
-    \paragraph{Acknowledgements.}
-      AI-assisted tools were used during the preparation of this work.
-      All scientific content, results, and conclusions are the sole responsibility of the author.
+  \paragraph{Acknowledgements.}
+    AI-assisted tools were used during the preparation of this work.
+    All scientific content, results, and conclusions are the sole responsibility of the author.
 
-      \bibliographystyle{plain}
-      \bibliography{cosmochrony-bibliography}
+    \bibliographystyle{plain}
+    \bibliography{cosmochrony-bibliography}
 
 \end{document}
