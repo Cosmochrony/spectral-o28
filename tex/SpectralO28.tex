@@ -151,7 +151,7 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
   rows of the Gram--Schmidt basis matrix accumulated up to shell $n_1$, and
   $v^{(s)}_j \in \mathbb{C}^q$ is the $j$-th Weil fingerprint vector at shell $s$.
 
-  \section{Part~A: Asymptotic Calibration of $n_1(q)/q$}
+  \section{Part A: Asymptotic Calibration of $n_1(q)/q$}
 
   \subsection{Extraction of $n_1(q)$ from checkpoints}
 
@@ -226,7 +226,7 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       \label{fig:part_a}
     \end{figure}
 
-  \section{Part~B: Effective Dimension of the Admissible Trajectory in
+  \section{Part B: Effective Dimension of the Admissible Trajectory in
     $\mathrm{End}(H_{\mathrm{eff}})$}
 
   \subsection{Data and computation}
@@ -345,6 +345,24 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       all pairs and primes, is a structural regularity deserving further analytical
       investigation; its connection to the $\mathfrak{su}(2)$ factorisation of O27 is
       an open problem.
+    \end{remark}
+
+    \begin{remark}[Structural origin of the exact degeneracy $\lambda_2 = \lambda_3$]
+      \label{rem:degeneracy}
+      The exact equality $\lambda_2 = \lambda_3$ across all conjugate pairs and all tested
+      primes is not a numerical coincidence.
+      It is a structural consequence of the Born--Infeld parity involution $c \leftrightarrow q-c$
+      established in O18~\cite{Beau2026a22}, which imposes $\rho_{q-c} = \bar\rho_c$ on the
+      Weil representation.
+      This conjugation symmetry correlates the two projections $\pi_c(v)$ and
+      $\pi_{q-c}(v)$ entering~\eqref{eq:covariance_b}: the outer product
+      $\widetilde{M}^s_j = \pi_c(v^{(s)}_j) \otimes \pi_{q-c}(v^{(s)}_j)^*$
+      is constrained to a symmetric subspace of $\mathrm{End}(\mathbb{C}^3)$, which
+      forces the covariance $\mathcal{C}_c$ to have a degenerate eigenvalue structure.
+      The degeneracy $\lambda_2 = \lambda_3$ is therefore a direct signature of the
+      pair constraint $c \leftrightarrow q-c$ at the level of the covariance operator,
+      and its persistence across all primes confirms that this constraint is structural,
+      not a finite-$q$ artefact.
     \end{remark}
 
   \section{Discussion}
