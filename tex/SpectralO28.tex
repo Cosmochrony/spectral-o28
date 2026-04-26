@@ -51,8 +51,12 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     invariant across all pairs and primes.
     This rank-3 result fills $H_{\mathrm{eff}}$ completely.
     The gap from the spin-$\tfrac{1}{2}$ prediction $d_\rho^2 = 4$ reflects that
-    $H_{\mathrm{eff}} \neq V_\rho$: the formal test within $\mathrm{End}(V_\rho)$ requires
-    first identifying $V_\rho \subset H_{\mathrm{eff}}$, which is the object of O29.
+    $H_{\mathrm{eff}} \neq V_\rho$.
+    The structural resolution of this gap is established in O29~\cite{Beau2026a33}:
+    the Born--Infeld parity constraint forces every outer product into the complex
+    symmetric subspace $\mathrm{Sym}(V_\rho, \mathbb{C})$, giving
+    $r_{\mathrm{eff}} = d_\rho(d_\rho+1)/2$; the observed $r_{\mathrm{eff}} = 3$
+    uniquely identifies $d_\rho = 2$ (spin-$\tfrac{1}{2}$).
   \end{abstract}
 
   \paragraph{Keywords.}
@@ -105,8 +109,9 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       \Rightarrow \mathfrak{su}(2)
     \]
     is thereby closed at the structural level.
-    The remaining open question after O27 is the numerical identification of the correct
-    irreducible sector from the covariance structure of the admissible trajectory.
+    The numerical identification of the correct irreducible sector from the covariance
+    structure of the admissible trajectory is addressed in the present paper (Part~B)
+    and completed in O29~\cite{Beau2026a33}.
 
   \subsection{Scope of O28}
 
@@ -325,26 +330,34 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     that the admissible subspace at the characteristic shell depth $n_3$ has dimension~$3$.
 
     The gap between $r_{\mathrm{eff}}^{1\%} = 3$ and the spin-$\tfrac{1}{2}$ prediction
-    $d_\rho^2 = 4$ has a structural explanation.
-    O26 Criterion~5.4 is formulated in $\mathrm{End}(V_\rho)$, where $V_\rho$ is the irreducible
-    representation space of dimension $d_\rho$.
-    The present computation operates in $\mathrm{End}(H_{\mathrm{eff}})$, where
-    $H_{\mathrm{eff}} = \mathbb{C}^3$ is the admissible projection subspace.
-    The identification $V_\rho \subset H_{\mathrm{eff}}$ has not yet been carried out: it
-    requires identifying the spin-$\tfrac{1}{2}$ irreducible sector within $\mathbb{C}^3$
-    and restricting the covariance to $\mathrm{End}(V_\rho)$.
+    $d_\rho^2 = 4$ has a structural explanation established in O29~\cite{Beau2026a33}.
+    The Born--Infeld parity constraint $\rho_{q-c} = \bar\rho_c$ (O18) forces every outer
+    product $\widetilde{M}_j$ into the complex symmetric subspace
+    $\mathrm{Sym}(V_\rho, \mathbb{C}) \subsetneq \mathrm{End}(V_\rho)$.
+    This yields the \emph{symmetric rank formula} $r_{\mathrm{eff}} = d_\rho(d_\rho+1)/2$
+    in place of the full rank $d_\rho^2$, and the unique positive integer inversion
+    $r_{\mathrm{eff}} = 3 \Rightarrow d_\rho = 2$ identifies the spin-$\tfrac{1}{2}$ sector.
 
-    \begin{remark}[Status of O26 Criterion~5.4]
+    \begin{remark}[Resolution of O26 Criterion~5.4 in O29]
       \label{rem:status}
-      The result $r_{\mathrm{eff}} = 3$ in $\mathrm{End}(H_{\mathrm{eff}})$ is not
-      inconsistent with the spin-$\tfrac{1}{2}$ prediction: if $V_\rho \subsetneq H_{\mathrm{eff}}$
-      with $d_\rho = 2$, the restriction of $\mathcal{C}_c$ to $\mathrm{End}(V_\rho)$
-      could still have rank $\leq 4$, while the full $\mathcal{C}_c$ in
-      $\mathrm{End}(H_{\mathrm{eff}})$ has rank $3 < 9$.
-      The exact eigenvalue structure $[1, \tfrac{1}{2}, \tfrac{1}{2}]$, invariant across
-      all pairs and primes, is a structural regularity deserving further analytical
-      investigation; its connection to the $\mathfrak{su}(2)$ factorisation of O27 is
-      an open problem.
+      The result $r_{\mathrm{eff}} = 3$ established in the present paper is explained
+      and the spin-$\tfrac{1}{2}$ sector identified in O29~\cite{Beau2026a33} as follows.
+      The Born--Infeld parity constraint $\pi_{q-c}(v) = \overline{\pi_c(v)}$ is proved
+      to force every outer product $\widetilde{M}_j$ into the complex symmetric subspace
+      $\mathrm{Sym}(V_\rho, \mathbb{C})$, an algebraic identity independent of any genericity
+      assumption on the trajectory.
+      Since $\dim_{\mathbb{C}}\mathrm{Sym}(V_\rho, \mathbb{C}) = d_\rho(d_\rho+1)/2$,
+      the O26 Criterion~5.4 must be reformulated for conjugate-pair data:
+      the correct falsifiability target is $r_{\mathrm{eff}} = d_\rho(d_\rho+1)/2$ rather
+      than the full rank $d_\rho^2$.
+      The unique positive integer solution of $r_{\mathrm{eff}} = 3$ is $d_\rho = 2$,
+      confirming the spin-$\tfrac{1}{2}$ sector.
+      This is not a loss of information: the restriction to $\mathrm{Sym}(V_\rho,\mathbb{C})$
+      reflects a measurement constraint induced by the parity involution, not a reduction of
+      the underlying degrees of freedom in $V_\rho$.
+      The exact eigenvalue structure $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$ is explained
+      by the isotropy of the BFS trajectory within $V_\rho$, itself a consequence of the
+      rotational symmetry of the Cayley graph generating set.
     \end{remark}
 
     \begin{remark}[Structural origin of the exact degeneracy $\lambda_2 = \lambda_3$]
@@ -397,12 +410,11 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       structure~\eqref{eq:eig_structure}.
       \item Extension of the BFS campaign to $q \in \{307, 401\}$ to further constrain
       $\hat{\alpha}$.
-      \item O29: identification of the spin-$\tfrac{1}{2}$ irreducible sector $V_\rho$ within
-      $H_{\mathrm{eff}} = \mathbb{C}^3$ and computation of $r_{\mathrm{eff}}$ in
-      $\mathrm{End}(V_\rho)$.
-      This requires the representation-theoretic decomposition of $H_{\mathrm{eff}}$ into
-      irreducible $\mathfrak{su}(2)$ components, as established analytically by O27~\cite{Beau2026a31}.
     \end{itemize}
+
+    The representation-theoretic direction (identification of the spin-$\tfrac{1}{2}$ sector
+    $V_\rho$ and computation of $r_{\mathrm{eff}}$ in $\mathrm{End}(V_\rho)$) is
+    completed in O29~\cite{Beau2026a33}; see Remark~\ref{rem:status} above.
 
   \section{Conclusion}
 
@@ -418,10 +430,11 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
   $q \in \{61, 101, 151\}$.
   This fills $H_{\mathrm{eff}} = \mathbb{C}^3$ completely, consistent with
   $\Sigma_c(n_3) = 3$ from O23~\cite{Beau2026a27}.
-  The gap from the spin-$\tfrac{1}{2}$ prediction $d_\rho^2 = 4$ has a structural
-  explanation: $H_{\mathrm{eff}} \neq V_\rho$, and the formal O26 test within
-  $\mathrm{End}(V_\rho)$ requires the identification $V_\rho \subset H_{\mathrm{eff}}$,
-  which is deferred to O29.
+  The gap from the spin-$\tfrac{1}{2}$ prediction $d_\rho^2 = 4$ is resolved
+  in O29~\cite{Beau2026a33}: the Born--Infeld parity constraint forces the outer
+  products into $\mathrm{Sym}(V_\rho, \mathbb{C})$, giving the symmetric rank formula
+  $r_{\mathrm{eff}} = d_\rho(d_\rho+1)/2$, whose unique inversion at $r_{\mathrm{eff}} = 3$
+  identifies $d_\rho = 2$ (spin-$\tfrac{1}{2}$).
 
   \clearpage
 
