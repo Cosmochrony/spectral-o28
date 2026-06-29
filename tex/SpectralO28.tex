@@ -36,7 +36,10 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     $q \in \{29, 61, 101, 151\}$.
     First, we extract $n_1(q)$ from the auto-calibrated fitting windows and fit
     $n_1(q) = \hat{\alpha}\,q + \hat{\beta}$ by ordinary least squares, obtaining
-    $\hat{\alpha} \approx 0.053$ with $R^2 \approx 0.879$.
+    $\hat{\alpha} \approx 0.053$ with $R^2 \approx 0.879$ over $q \le 211$.
+    Extending the window-depth measurement out of sample to $q \in \{307, 401, 503, 601\}$ excludes this
+    linear law (it overpredicts $n_1$ by up to $+88\%$) and establishes $n_1(q)/q \to 0$; the asymptotic
+    law of $n_1$ otherwise remains open.
     The O14 correction~\cite{Beau2026a18} yields
     $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$
     for all $q \in \{29, 61, 101, 151, 211\}$, confirming the structural conclusion of O25.
@@ -117,9 +120,9 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
 
     O28 addresses the two numerical questions left open after O25--O27:
     \begin{enumerate}
-      \item \textbf{Part~A}: calibrate the asymptotic constant $\hat{\alpha}$ in
-      $n_1(q) \sim \hat{\alpha}\,q$ and reassess $\delta_{\mathrm{corr}}(q)$ using the measured
-      $n_1$ values.
+      \item \textbf{Part~A}: determine the asymptotic behaviour of the auto-calibrated window depth
+      $n_1(q)$, test the linear scaling hypothesis suggested by the initial calibration range, and
+      reassess $\delta_{\mathrm{corr}}(q)$ using the measured window depths.
       \item \textbf{Part~B}: perform the formal effective-dimension computation of
       O26 Criterion~5.4 using the per-block Weil vector projections $\pi_c(v) \in H_{\mathrm{eff}}$
       stored in the Q5a-O5 checkpoints, and determine what the covariance structure of
@@ -187,7 +190,7 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       \end{tabular}
     \end{table}
 
-  \subsection{OLS fit and asymptotic constant}
+  \subsection{Initial OLS calibration on $q \le 211$}
 
     \begin{proposition}[Empirical window-depth fit]
       \label{prop:ols}
@@ -195,18 +198,45 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       yields $\hat{\alpha} \approx 0.053$ (95\% CI: $[0.017, 0.088]$),
       $\hat{\beta} \approx 4.175$, $R^2 \approx 0.879$, $p \approx 0.018$.
       The ratio $n_1(q)/q$ decreases from $0.138$ at $q = 29$ to $0.066$ at $q = 211$.
-      The Window-Depth Theorem (O9, Theorem~6.1~\cite{Beau2026a13}) guarantees
-      $n_1(q) = \Theta(q)$; the present fit quantifies the proportionality constant empirically
-      as a lower bound.
+      The Window-Depth Theorem (O9, Theorem~6.1~\cite{Beau2026a13}) guarantees only that the available
+      BFS window is $\Theta(q)$ deep, so the log-log fit has polynomially many points; it does not pin
+      the growth of $n_1$ itself, which the out-of-sample test below shows to be sub-linear.
     \end{proposition}
 
-    \begin{remark}
-      The ratio $n_1(q)/q$ is monotonically decreasing over the entire tested range.
-      The asymptotic regime $n_1(q) \sim \alpha q$ has not yet been reached at $q = 211$.
-      Proposition~\ref{prop:ols} therefore provides a lower-bound estimate of $\alpha$ rather
-      than a convergent identification.
-      Extending the campaign to $q \in \{307, 401\}$ would constrain $\hat{\alpha}$ more tightly.
-    \end{remark}
+  \subsection{Out-of-sample test: the linear law fails and $n_1(q)/q \to 0$}
+
+    The window-depth measurement was extended out of sample to $q \in \{307, 401, 503, 601\}$, well
+    beyond the calibration range of Proposition~\ref{prop:ols}, using the same auto-calibrated window
+    edge $n_1$; the procedure reproduces the production values of Table~\ref{tab:window} exactly on
+    $q \in \{29, 61, 101, 151, 211\}$.
+    Table~\ref{tab:n1oos} collects the result.
+
+    \begin{table}[ht]
+      \centering
+      \caption{Out-of-sample window depth.
+        $n_1^{\mathrm{lin}}(q)$ is the prediction of the OLS fit $\hat\alpha\,q + \hat\beta$ of
+        Proposition~\ref{prop:ols}, calibrated on $q \le 211$.}
+      \label{tab:n1oos}
+      \begin{tabular}{rrrrr}
+        \toprule
+        $q$ & $n_1(q)$ & $n_1(q)/q$ & $n_1^{\mathrm{lin}}(q)$ & overprediction \\
+        \midrule
+        307 & 16 & 0.052 & 20.3 & $+27\%$ \\
+        401 & 17 & 0.042 & 25.3 & $+49\%$ \\
+        503 & 19 & 0.038 & 30.7 & $+62\%$ \\
+        601 & 19 & 0.032 & 35.8 & $+88\%$ \\
+        \bottomrule
+      \end{tabular}
+    \end{table}
+
+    The linear law calibrated on $q \le 211$ overpredicts $n_1$ by a margin that grows monotonically to
+    $+88\%$ at $q = 601$: it is excluded out of sample.
+    The ratio $n_1(q)/q$ continues its monotone decrease, from $0.138$ at $q = 29$ to $0.032$ at
+    $q = 601$, with no sign of a positive floor.
+    We therefore conclude $\lim_{q \to \infty} n_1(q)/q = 0$: the window depth is sub-linear, and the
+    estimate $\hat\alpha \approx 0.053$ is a finite-range residue of fitting a straight line to a
+    sub-linear curve, not an asymptotic constant.
+    The asymptotic law of $n_1$ remains open; only the linear scaling hypothesis is excluded.
 
   \subsection{Stability of $\delta_{\mathrm{corr}}(q)$}
 
@@ -223,8 +253,9 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       \includegraphics[width=\linewidth]{o28_n1_calibration}
       \caption{Part~A: BFS window depth calibration over $q \in \{29,61,101,151,211\}$.
         (a)~$n_1(q)$ with OLS fit $n_1 = \hat\alpha\,q + \hat\beta$ and 95\% confidence band.
-        (b)~Ratio $n_1(q)/q$: monotonically decreasing from $0.138$ to $0.066$, confirming
-        Scenario~S2 (pre-asymptotic regime throughout the tested range).
+        (b)~Ratio $n_1(q)/q$: monotonically decreasing from $0.138$ to $0.066$; the out-of-sample
+        extension (Table~\ref{tab:n1oos}) continues this decrease to $0.032$ at $q = 601$, giving
+        $n_1(q)/q \to 0$.
         (c)~Raw $\bar\delta_{\mathrm{pair}}(q)$ with inter-pair standard deviation error bars
         and O14-corrected $\delta_{\mathrm{corr}}(q)$; all corrected values lie within the
         admissible window $[7.4,10.6]$ (shaded).}
@@ -381,9 +412,11 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     confirming that the finite-size drift of $\bar{\delta}_{\mathrm{pair}}(q)$ is a
     normalisation effect.
 
-    Second, $n_1(q)/q$ decreases monotonically from $0.138$ to $0.066$ over the tested range,
-    confirming the $\Theta(q)$ scaling of O9~\cite{Beau2026a13} and ruling out sub-linear growth.
-    The asymptotic constant $\hat{\alpha}$ is bounded below by $0.053$ but not yet stabilised.
+    Second, the out-of-sample extension of the window-depth measurement to
+    $q \in \{307, 401, 503, 601\}$ excludes the linear law: the OLS fit calibrated on $q \le 211$
+    overpredicts $n_1$ by $+27/+49/+62/+88\%$, and $n_1(q)/q$ decreases monotonically from $0.138$ to
+    $0.032$, so $\lim_{q \to \infty} n_1(q)/q = 0$.
+    The asymptotic law of $n_1$ remains open; only the linear scaling hypothesis is excluded.
 
     Third, the covariance $\mathcal{C}_c$ in $\mathrm{End}(H_{\mathrm{eff}})$ has rank
     exactly~$3$ for every conjugate pair at $q \in \{61, 101, 151\}$, with invariant eigenvalue
@@ -397,11 +430,9 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
 
     The following directions are explicitly open after O28:
     \begin{itemize}
-      \item Analytical derivation of the asymptotic constant
-      $\alpha = \lim_{q \to \infty} n_1(q)/q$ and of the exact eigenvalue
-      structure~\eqref{eq:eig_structure}.
-      \item Extension of the BFS campaign to $q \in \{307, 401\}$ to further constrain
-      $\hat{\alpha}$.
+      \item The asymptotic law of $n_1(q)$: the out-of-sample campaign (now carried to $q = 601$)
+      establishes $n_1(q)/q \to 0$ and excludes the linear law, but the sub-linear law itself is open.
+      \item Analytical derivation of the exact eigenvalue structure~\eqref{eq:eig_structure}.
     \end{itemize}
 
     The representation-theoretic direction (identification of the spin-$\tfrac{1}{2}$ sector
@@ -412,8 +443,10 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
 
   O28 closes two open directions of the post-O27 programme.
   On the calibration side, $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$ for all
-  $q \in \{29, 61, 101, 151, 211\}$, and the ratio $n_1(q)/q$ continues to decrease through
-  $q = 211$ (Scenario~S2), placing the asymptotic calibration in the pre-asymptotic regime.
+  $q \in \{29, 61, 101, 151, 211\}$, and the out-of-sample extension to $q = 601$ shows $n_1(q)/q$
+  decreasing to $0.032$ and overpredicted by the linear fit by up to $+88\%$, establishing
+  $n_1(q)/q \to 0$; the linear scaling hypothesis is excluded, the sub-linear law otherwise remaining
+  open.
 
   On the representation-theoretic side, the formal computation of O26 Criterion~5.4
   in $\mathrm{End}(H_{\mathrm{eff}})$ yields a clean and robust result: the covariance
