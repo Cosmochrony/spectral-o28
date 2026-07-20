@@ -1,11 +1,24 @@
 \documentclass[11pt,a4paper]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\input{glyphtounicode}
+\pdfgentounicode=1
 \usepackage{amsmath,amssymb,amsthm}
 \usepackage{graphicx}
-\usepackage{hyperref}
 \usepackage{booktabs}
 \usepackage{microtype}
 \usepackage{geometry}
+\usepackage{doi}
+\usepackage{hyperref}
 \geometry{margin=2.5cm}
+
+\hypersetup{
+  pdftitle={Asymptotic Calibration of the BFS Window and Effective Dimension of the Admissible Trajectory},
+  pdfauthor={J\'er\^ome Beau},
+  pdfsubject={Finite-size window calibration and effective covariance dimension in spectral admissibility},
+  pdfkeywords={spectral admissibility, BFS window depth, Weil representation, Heisenberg graphs,
+    covariance operator, effective dimension, Born--Infeld saturation}
+}
 
 \newtheorem{theorem}{Theorem}[section]
 \newtheorem{proposition}[theorem]{Proposition}
@@ -27,39 +40,46 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
   \maketitle
 
   \begin{abstract}
-    The O25 programme~\cite{Beau2026a29} identified the ratio $n_1(q)/q$ as the central open
+    The O25 programme identified the ratio $n_1(q)/q$ as the central open
     asymptotic variable controlling the finite-size drift of $\bar{\delta}_{\mathrm{pair}}(q)$,
-    and O26--O27~\cite{Beau2026a30,Beau2026a31} identified the effective dimension
+    and O26--O27 identified the effective dimension
     $r_{\mathrm{eff}} = d_\rho^2$ of the per-pair covariance operator in $\mathrm{End}(V_\rho)$
     as the key falsifiability criterion for the representation-theoretic identification.
-    The present paper reports two measurements from the Q5a-O5 checkpoints for
-    $q \in \{29, 61, 101, 151\}$.
+    The present paper reports two analyses built from the Q5a-O5 checkpoints and their documented
+    prime-range extensions.
     First, we extract $n_1(q)$ from the auto-calibrated fitting windows and fit
     $n_1(q) = \hat{\alpha}\,q + \hat{\beta}$ by ordinary least squares, obtaining
     $\hat{\alpha} \approx 0.053$ with $R^2 \approx 0.879$ over $q \le 211$.
-    Extending the window-depth measurement out of sample to $q \in \{307, 401, 503, 601\}$ excludes this
-    linear law (it overpredicts $n_1$ by up to $+88\%$) and establishes $n_1(q)/q \to 0$; the asymptotic
-    law of $n_1$ otherwise remains open.
-    The O14 correction~\cite{Beau2026a18} yields
+    Extending the window-depth measurement out of sample to $q \in \{307, 401, 503, 601\}$ makes
+    this calibrated linear extrapolation fail (it overpredicts $n_1$ by up to $+88\%$).
+    The exact law is established in the companion Critical Coverage note: $n_1(q) \to 22$ in
+    probability for five independently and uniformly sampled generic blocks, with critical
+    coverage $x_1(q) = |B_{n_1}|/q^2 \asymp q^{-2}$; the measured decrease of $n_1(q)/q$ belongs
+    to the transitional resonance regime of that law.
+    The O14 correction yields
     $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$
     for all $q \in \{29, 61, 101, 151, 211\}$, confirming the structural conclusion of O25.
     Second, using the per-block Weil vector projections $\pi_c(v)$ stored in the Q5a-O5
     checkpoints, we perform the formal effective-dimension computation of O26 Criterion~5.4
     in $\mathrm{End}(H_{\mathrm{eff}})$, where $H_{\mathrm{eff}} = \mathbb{C}^3$ is the
     admissible projection space ($\mathrm{HEFF\_DIM} = 3$, consistent with $\Sigma_c(n_3) = 3$
-    from O23~\cite{Beau2026a27}).
-    The covariance $\mathcal{C}_c$ has rank exactly $r_{\mathrm{eff}} = 3$ for every conjugate
-    pair and every prime $q \in \{61, 101, 151\}$ (100\% of pairs), with normalised eigenvalue
-    structure $[\lambda_1 : \lambda_2 : \lambda_3] = [1 : \tfrac{1}{2} : \tfrac{1}{2}]$
+    from O23).
+    The covariance $\mathcal{C}_c$ has $1\%$ threshold rank
+    $r_{\mathrm{eff}}^{1\%} = 3$ for every conjugate pair and every prime
+    $q \in \{61, 101, 151\}$ (100\% of pairs), with normalised resolved spectrum
+    $[\lambda_1 : \lambda_2 : \lambda_3] = [1 : \tfrac{1}{2} : \tfrac{1}{2}]$
     invariant across all pairs and primes.
-    This rank-3 result fills $H_{\mathrm{eff}}$ completely.
+    These three resolved modes fill $H_{\mathrm{eff}}$ completely.
     The gap from the spin-$\tfrac{1}{2}$ prediction $d_\rho^2 = 4$ reflects that
     $H_{\mathrm{eff}} \neq V_\rho$.
-    The structural resolution of this gap is established in O29~\cite{Beau2026a33}:
+    The structural resolution of this gap is established in O29:
     the anti-linear Born--Infeld parity makes the target $d_\rho^2 = 4$ inaccessible from conjugate-pair data, and
     $r_{\mathrm{eff}} = 3$ identifies the irreducible adjoint carrier $H_{\mathrm{eff}} \simeq \mathrm{Sym}^2(V_\rho)$
     (spin-$1$); the spin-$\tfrac{1}{2}$ space $V_\rho$ ($d_\rho = 2$) is recovered as the Veronese square-root
     structure, not as the rank measured by Test~4.
+    Interpretively, the combined result separates a finite-$q$ calibration diagnostic from its
+    now-proved asymptotic law and separates a covariance-carrier measurement from a direct
+    measurement of the spin-$\tfrac{1}{2}$ dimension.
   \end{abstract}
 
   \paragraph{Keywords.}
@@ -159,9 +179,9 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
   rows of the Gram--Schmidt basis matrix accumulated up to shell $n_1$, and
   $v^{(s)}_j \in \mathbb{C}^q$ is the $j$-th Weil fingerprint vector at shell $s$.
 
-  \section{Part A: Asymptotic Calibration of $n_1(q)/q$}
+  \section{Part A: Asymptotic Calibration of \texorpdfstring{$n_1(q)/q$}{n1(q)/q}}
 
-  \subsection{Extraction of $n_1(q)$ from checkpoints}
+  \subsection{Extraction of \texorpdfstring{$n_1(q)$}{n1(q)} from checkpoints}
 
     For each prime $q \in \{29, 61, 101, 151\}$, the value $n_1(q)$ is extracted from the
     \texttt{n1} key of the Q5a-O5 checkpoint.
@@ -190,7 +210,7 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       \end{tabular}
     \end{table}
 
-  \subsection{Initial OLS calibration on $q \le 211$}
+  \subsection{Initial OLS calibration on \texorpdfstring{$q \le 211$}{q <= 211}}
 
     \begin{proposition}[Empirical window-depth fit]
       \label{prop:ols}
@@ -200,10 +220,11 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       The ratio $n_1(q)/q$ decreases from $0.138$ at $q = 29$ to $0.066$ at $q = 211$.
       The Window-Depth Theorem (O9, Theorem~6.1~\cite{Beau2026a13}) guarantees only that the available
       BFS window is $\Theta(q)$ deep, so the log-log fit has polynomially many points; it does not pin
-      the growth of $n_1$ itself, which the out-of-sample test below shows to be sub-linear.
+      the growth of $n_1$ itself; the out-of-sample test below instead tests the calibrated linear
+      extrapolation directly.
     \end{proposition}
 
-  \subsection{Out-of-sample test: the linear law fails and $n_1(q)/q \to 0$}
+  \subsection{Out-of-sample failure of the calibrated linear extrapolation}
 
     The window-depth measurement was extended out of sample to $q \in \{307, 401, 503, 601\}$, well
     beyond the calibration range of Proposition~\ref{prop:ols}, using the same auto-calibrated window
@@ -229,16 +250,22 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       \end{tabular}
     \end{table}
 
-    The linear law calibrated on $q \le 211$ overpredicts $n_1$ by a margin that grows monotonically to
-    $+88\%$ at $q = 601$: it is excluded out of sample.
+    The linear law calibrated on $q \le 211$ overpredicts $n_1$ by a margin that grows monotonically
+    to $+88\%$ at $q = 601$: this fitted extrapolation fails out of sample.
     The ratio $n_1(q)/q$ continues its monotone decrease, from $0.138$ at $q = 29$ to $0.032$ at
     $q = 601$, with no sign of a positive floor.
-    We therefore conclude $\lim_{q \to \infty} n_1(q)/q = 0$: the window depth is sub-linear, and the
-    estimate $\hat\alpha \approx 0.053$ is a finite-range residue of fitting a straight line to a
-    sub-linear curve, not an asymptotic constant.
-    The asymptotic law of $n_1$ remains open; only the linear scaling hypothesis is excluded.
+    These finite measurements do not by themselves determine an asymptotic limit; their independent
+    conclusion is that $\hat\alpha \approx 0.053$ does not extrapolate beyond the calibration range.
+    The exact asymptotic law is established in the Critical Coverage note~\cite{Beau2026ccnote}:
+    $n_1(q) \le 22$ deterministically for every prime $q \ge 311$, $n_1(q) \to 22$ in probability
+    under uniform generic block sampling, and the critical coverage obeys
+    $x_1(q) = |B_{n_1}|/q^2 \asymp q^{-2}$.
+    In that light, the values of Table~\ref{tab:n1oos} are transitional: the interval theorem
+    identifies block resonances as the mechanism keeping $n_1$ below its limit $22$ at accessible
+    $q$, and the measured climb $16 \to 19$ over $q = 307 \to 601$ is consistent with the approach
+    to that constant.
 
-  \subsection{Stability of $\delta_{\mathrm{corr}}(q)$}
+  \subsection{Stability of \texorpdfstring{$\delta_{\mathrm{corr}}(q)$}{delta-corr(q)}}
 
     From Table~\ref{tab:window}, the correction factor $\eta \log q / \log n_1(q)$ lies in
     $[0.96, 1.21]$ over the tested range.
@@ -254,8 +281,7 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       \caption{Part~A: BFS window depth calibration over $q \in \{29,61,101,151,211\}$.
         (a)~$n_1(q)$ with OLS fit $n_1 = \hat\alpha\,q + \hat\beta$ and 95\% confidence band.
         (b)~Ratio $n_1(q)/q$: monotonically decreasing from $0.138$ to $0.066$; the out-of-sample
-        extension (Table~\ref{tab:n1oos}) continues this decrease to $0.032$ at $q = 601$, giving
-        $n_1(q)/q \to 0$.
+        extension (Table~\ref{tab:n1oos}) continues this decrease to $0.032$ at $q = 601$.
         (c)~Raw $\bar\delta_{\mathrm{pair}}(q)$ with inter-pair standard deviation error bars
         and O14-corrected $\delta_{\mathrm{corr}}(q)$; all corrected values lie within the
         admissible window $[7.4,10.6]$ (shaded).}
@@ -263,7 +289,7 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     \end{figure}
 
   \section{Part B: Effective Dimension of the Admissible Trajectory in
-    $\mathrm{End}(H_{\mathrm{eff}})$}
+    \texorpdfstring{$\mathrm{End}(H_{\mathrm{eff}})$}{End(H-eff)}}
 
   \subsection{Data and computation}
 
@@ -354,9 +380,9 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
   \subsection{Interpretation}
     \label{sec:interp}
 
-    The rank-3 result fills $H_{\mathrm{eff}}$ completely: the trajectory of outer products
-    $\widetilde{M}^s_j$ spans the full 3-dimensional eigenspace of $\mathcal{C}_c$ within
-    $\mathrm{End}(\mathbb{C}^3)$.
+    The three resolved modes fill $H_{\mathrm{eff}}$ completely: at the stated numerical threshold,
+    the trajectory of outer products $\widetilde{M}^s_j$ spans a 3-dimensional eigenspace of
+    $\mathcal{C}_c$ within $\mathrm{End}(\mathbb{C}^3)$.
     This is consistent with $\Sigma_c(n_3) = 3$ from O23~\cite{Beau2026a27}, which established
     that the admissible subspace at the characteristic shell depth $n_3$ has dimension~$3$.
 
@@ -370,7 +396,8 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
 
     \begin{remark}[Resolution of O26 Criterion~5.4 in O29]
       \label{rem:status}
-      The result $r_{\mathrm{eff}} = 3$ established in the present paper is explained
+      The threshold-rank result $r_{\mathrm{eff}}^{1\%} = 3$ observed in the present paper is
+      explained
       in O29~\cite{Beau2026a33} as follows.
       The anti-linear Born--Infeld parity $\pi_{q-c}(v) = \overline{\pi_c(v)}$ makes every outer product
       $\widetilde{M}_j$ complex symmetric, so the conjugate-pair target $d_\rho^2 = 4$ of O26 Criterion~5.4 is
@@ -383,22 +410,21 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       spin-$1$ carrier (the degeneracy $\lambda_2 = \lambda_3$; see Remark~\ref{rem:degeneracy}).
     \end{remark}
 
-    \begin{remark}[Structural origin of the exact degeneracy $\lambda_2 = \lambda_3$]
+    \begin{remark}[Structural interpretation of the observed degeneracy $\lambda_2 = \lambda_3$]
       \label{rem:degeneracy}
-      The exact equality $\lambda_2 = \lambda_3$ across all conjugate pairs and all tested
-      primes is not a numerical coincidence.
-      It is a structural consequence of the Born--Infeld parity involution $c \leftrightarrow q-c$
-      established in O18~\cite{Beau2026a22}, which imposes $\rho_{q-c} = \bar\rho_c$ on the
-      Weil representation.
+      The equality $\lambda_2 = \lambda_3$ is observed, within numerical precision, across all
+      conjugate pairs and all tested primes.
+      O29~\cite{Beau2026a33} interprets this two-fold degeneracy as the axial
+      $\mathrm{U}(1) \subset \mathrm{SO}(3)$ degeneracy of the spin-$1$ carrier.
+      The Born--Infeld parity involution $c \leftrightarrow q-c$ established in
+      O18~\cite{Beau2026a22} imposes $\rho_{q-c} = \bar\rho_c$ on the Weil representation and
+      restricts the outer products to a symmetric subspace.
       This conjugation symmetry correlates the two projections $\pi_c(v)$ and
       $\pi_{q-c}(v)$ entering~\eqref{eq:covariance_b}: the outer product
       $\widetilde{M}^s_j = \pi_c(v^{(s)}_j) \otimes \pi_{q-c}(v^{(s)}_j)^*$
-      is constrained to a symmetric subspace of $\mathrm{End}(\mathbb{C}^3)$, which
-      forces the covariance $\mathcal{C}_c$ to have a degenerate eigenvalue structure.
-      The degeneracy $\lambda_2 = \lambda_3$ is therefore a direct signature of the
-      pair constraint $c \leftrightarrow q-c$ at the level of the covariance operator,
-      and its persistence across all primes confirms that this constraint is structural,
-      not a finite-$q$ artefact.
+      is constrained to a symmetric subspace of $\mathrm{End}(\mathbb{C}^3)$.
+      That restriction alone does not derive either the two-fold degeneracy or the ratio
+      $\lambda_1 : \lambda_2 = 2 : 1$; their analytical derivation remains open.
     \end{remark}
 
   \section{Discussion}
@@ -412,28 +438,35 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     confirming that the finite-size drift of $\bar{\delta}_{\mathrm{pair}}(q)$ is a
     normalisation effect.
 
-    Second, the out-of-sample extension of the window-depth measurement to
-    $q \in \{307, 401, 503, 601\}$ excludes the linear law: the OLS fit calibrated on $q \le 211$
-    overpredicts $n_1$ by $+27/+49/+62/+88\%$, and $n_1(q)/q$ decreases monotonically from $0.138$ to
-    $0.032$, so $\lim_{q \to \infty} n_1(q)/q = 0$.
-    The asymptotic law of $n_1$ remains open; only the linear scaling hypothesis is excluded.
+    Second, the out-of-sample extension of the window-depth measurement at the four primes
+    $307$, $401$, $503$, and $601$ makes the calibrated OLS extrapolation fail: it overpredicts
+    $n_1$ by $+27/+49/+62/+88\%$, while $n_1(q)/q$ decreases monotonically from $0.138$ to $0.032$.
+    This finite-range rejection stands on the measurements alone.
+    The limit $n_1(q)/q \to 0$ instead follows from the exact law --- convergence of $n_1$ to the
+    constant $22$ and inverse-square critical coverage --- proved by the interval theorem of the
+    Critical Coverage note~\cite{Beau2026ccnote}, which identifies the present values as
+    transitional-regime data.
 
-    Third, the covariance $\mathcal{C}_c$ in $\mathrm{End}(H_{\mathrm{eff}})$ has rank
-    exactly~$3$ for every conjugate pair at $q \in \{61, 101, 151\}$, with invariant eigenvalue
-    structure $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$.
+    Third, the covariance $\mathcal{C}_c$ in $\mathrm{End}(H_{\mathrm{eff}})$ has $1\%$ threshold
+    rank~$3$ for every conjugate pair at $q \in \{61, 101, 151\}$, with invariant resolved
+    eigenvalue structure $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$.
     This result is robust: zero inter-pair variance at $q \in \{29, 101\}$, negligible at
     $q \in \{61, 151\}$.
-    The rank-3 result fills $H_{\mathrm{eff}}$ completely and is consistent with
+    The three resolved modes fill $H_{\mathrm{eff}}$ completely and are consistent with
     $\Sigma_c(n_3) = 3$ from O23.
 
   \subsection{What remains open}
 
-    The following directions are explicitly open after O28:
-    \begin{itemize}
-      \item The asymptotic law of $n_1(q)$: the out-of-sample campaign (now carried to $q = 601$)
-      establishes $n_1(q)/q \to 0$ and excludes the linear law, but the sub-linear law itself is open.
-      \item Analytical derivation of the exact eigenvalue structure~\eqref{eq:eig_structure}.
-    \end{itemize}
+    One direction is explicitly open after O28: the analytical derivation of the exact eigenvalue
+    structure~\eqref{eq:eig_structure}.
+
+    The asymptotic law of $n_1(q)$ is established in the Critical Coverage
+    note~\cite{Beau2026ccnote}: every implemented Weil--BFS fingerprint is a Fourier character, the
+    cumulative rank is the sumset cardinality $r_c(n) = |T'_c + C\,I_{n+1}|$ with universal
+    shellwise ceiling $18$, and exact sphere counts of the infinite Heisenberg group give
+    $n_1(q) \to 22$ in probability with $x_1(q) \asymp q^{-2}$.
+    The out-of-sample campaign of the present paper supplies the finite-$q$ data interpreted by that
+    theorem as transitional and independently rejects the calibrated linear extrapolation.
 
     The representation-theoretic direction (identification of the spin-$\tfrac{1}{2}$ sector
     $V_\rho$ and computation of $r_{\mathrm{eff}}$ in $\mathrm{End}(V_\rho)$) is
@@ -444,13 +477,17 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
   O28 closes two open directions of the post-O27 programme.
   On the calibration side, $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$ for all
   $q \in \{29, 61, 101, 151, 211\}$, and the out-of-sample extension to $q = 601$ shows $n_1(q)/q$
-  decreasing to $0.032$ and overpredicted by the linear fit by up to $+88\%$, establishing
-  $n_1(q)/q \to 0$; the linear scaling hypothesis is excluded, the sub-linear law otherwise remaining
-  open.
+  decreasing to $0.032$ while the calibrated linear fit overpredicts $n_1$ by up to $+88\%$.
+  These measurements reject that extrapolation over the tested range but do not alone establish an
+  asymptotic limit.
+  The exact law of the window depth is the interval theorem of the Critical Coverage
+  note~\cite{Beau2026ccnote} --- $n_1(q) \to 22$ in probability and
+  $x_1(q) \asymp q^{-2}$ --- from which $n_1(q)/q \to 0$ follows; the out-of-sample values reported
+  here are its transitional-regime data.
 
   On the representation-theoretic side, the formal computation of O26 Criterion~5.4
   in $\mathrm{End}(H_{\mathrm{eff}})$ yields a clean and robust result: the covariance
-  $\mathcal{C}_c$ has rank exactly~$3$ with invariant normalised eigenvalue structure
+  $\mathcal{C}_c$ has $1\%$ threshold rank~$3$ with invariant normalised resolved spectrum
   $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$ across all conjugate pairs and all primes
   $q \in \{61, 101, 151\}$.
   This fills $H_{\mathrm{eff}} = \mathbb{C}^3$ completely, consistent with
@@ -461,12 +498,21 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
   $H_{\mathrm{eff}} \simeq \mathrm{Sym}^2(V_\rho)$; the spin-$\tfrac{1}{2}$ space $V_\rho$ ($d_\rho = 2$) is the
   Veronese square-root structure.
 
+  \subsection*{Interpretive outlook}
+
+  The later interval theorem changes the status of Part~A without changing its data: the apparent
+  linear calibration is a finite-size diagnostic, not a structural scaling law.
+  Part~B likewise measures the carrier visible to the conjugate-pair covariance rather than the
+  dimension of the underlying spin-$\tfrac{1}{2}$ sector directly.
+  This interpretation is a programme-level reading of the combined results, not an additional
+  theorem of O28.
+
   \clearpage
 
   \paragraph{Data and Code Availability.}
-    The analysis scripts \texttt{o28\_analysis.py}, \texttt{o28\_reff\_extract.py}, and
-    \texttt{o28\_reff\_figures.py}, the checkpoint files \texttt{q\{q\}\_o25.npz}, and the
-    summary file \texttt{o28\_reff\_summary.npz} are available in the o28 directory of
+    The analysis scripts \path{o28_analysis.py}, \path{o28_reff_extract.py}, and
+    \path{o28_reff_figures.py}, the checkpoint files \texttt{q\{q\}\_o25.npz}, and the summary
+    file \path{o28_reff_summary.npz} are available in the o28 directory of
     \href{https://doi.org/10.5281/zenodo.18292335}{10.5281/zenodo.18292335}.
 
   \paragraph{Acknowledgements.}
