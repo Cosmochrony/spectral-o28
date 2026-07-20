@@ -11,14 +11,14 @@ O28 reports two measurements from the Q5a–O5 checkpoints:
 - **Part A — BFS window calibration.** The auto-calibrated window depth $n_1(q)$ is measured over
   $q \in \{29, 61, 101, 151, 211\}$ and extended out of sample to $q \in \{307, 401, 503, 601\}$.
   The linear law $n_1 \approx \hat{\alpha} q$ ($\hat{\alpha} \approx 0.053$, calibrated on
-  $q \le 211$) is excluded out of sample (overprediction up to $+88\%$ at $q = 601$), and
-  $n_1(q)/q \to 0$.
+  $q \le 211$) fails out of sample (overprediction up to $+88\%$ at $q = 601$), while
+  $n_1(q)/q$ decreases to $0.032$.
   The O14-corrected exponent satisfies $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$ across the full
   range, confirming the structural conclusion of O25.
 - **Part B — effective dimension.** The per-pair covariance operator
-  $\mathcal{C}_c \in \mathrm{End}(H_{\mathrm{eff}})$, $H_{\mathrm{eff}} = \mathbb{C}^3$, has rank
-  exactly $r_{\mathrm{eff}} = 3$ for every conjugate pair and every tested prime, with invariant
-  spectrum $[1 : 1/2 : 1/2]$.
+  $\mathcal{C}_c \in \mathrm{End}(H_{\mathrm{eff}})$, $H_{\mathrm{eff}} = \mathbb{C}^3$, has
+  $1\%$ threshold rank $r_{\mathrm{eff}}^{1\%} = 3$ for every conjugate pair and every tested
+  prime, with invariant resolved spectrum $[1 : 1/2 : 1/2]$.
   The gap with the spin-½ prediction $d_\rho^2 = 4$ is resolved in O29: the anti-linear
   Born–Infeld parity makes $d_\rho^2 = 4$ inaccessible from conjugate-pair data, and
   $r_{\mathrm{eff}} = 3$ identifies the adjoint (spin-1) carrier
@@ -26,7 +26,8 @@ O28 reports two measurements from the Q5a–O5 checkpoints:
 
 ## The exact window-depth law
 
-The measurements of Part A exclude the linear scaling hypothesis on their own.
+The measurements of Part A reject the calibrated linear extrapolation over the tested range; they
+do not by themselves establish an asymptotic limit.
 The exact asymptotic law is the interval theorem of the companion Critical Coverage note
 ([10.5281/zenodo.21049163](https://doi.org/10.5281/zenodo.21049163)): $n_1(q) \to 22$ in
 probability under uniform generic block sampling, with critical coverage
