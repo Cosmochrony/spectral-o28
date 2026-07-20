@@ -38,8 +38,11 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     $n_1(q) = \hat{\alpha}\,q + \hat{\beta}$ by ordinary least squares, obtaining
     $\hat{\alpha} \approx 0.053$ with $R^2 \approx 0.879$ over $q \le 211$.
     Extending the window-depth measurement out of sample to $q \in \{307, 401, 503, 601\}$ excludes this
-    linear law (it overpredicts $n_1$ by up to $+88\%$) and establishes $n_1(q)/q \to 0$; the asymptotic
-    law of $n_1$ otherwise remains open.
+    linear law (it overpredicts $n_1$ by up to $+88\%$) and establishes $n_1(q)/q \to 0$.
+    The exact law is established in the companion Critical Coverage note: $n_1(q) \to 22$ in
+    probability under generic block sampling, with critical coverage
+    $x_1(q) = |B_{n_1}|/q^2 \asymp q^{-2}$; the sub-linear decrease measured here is the
+    transitional resonance regime of that law.
     The O14 correction~\cite{Beau2026a18} yields
     $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$
     for all $q \in \{29, 61, 101, 151, 211\}$, confirming the structural conclusion of O25.
@@ -236,7 +239,15 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     We therefore conclude $\lim_{q \to \infty} n_1(q)/q = 0$: the window depth is sub-linear, and the
     estimate $\hat\alpha \approx 0.053$ is a finite-range residue of fitting a straight line to a
     sub-linear curve, not an asymptotic constant.
-    The asymptotic law of $n_1$ remains open; only the linear scaling hypothesis is excluded.
+    These measurements exclude the linear scaling hypothesis on their own, independently of any
+    analytical input.
+    The exact asymptotic law is established in the Critical Coverage note~\cite{Beau2026ccnote}:
+    $n_1(q) \le 22$ deterministically for every prime $q \ge 311$, $n_1(q) \to 22$ in probability
+    under uniform generic block sampling, and the critical coverage obeys
+    $x_1(q) = |B_{n_1}|/q^2 \asymp q^{-2}$.
+    In that light, the values of Table~\ref{tab:n1oos} are transitional: block resonances keep
+    $n_1$ below its limit $22$ at accessible $q$, and the measured climb $16 \to 19$ over
+    $q = 307 \to 601$ is the approach to that constant.
 
   \subsection{Stability of $\delta_{\mathrm{corr}}(q)$}
 
@@ -416,7 +427,10 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     $q \in \{307, 401, 503, 601\}$ excludes the linear law: the OLS fit calibrated on $q \le 211$
     overpredicts $n_1$ by $+27/+49/+62/+88\%$, and $n_1(q)/q$ decreases monotonically from $0.138$ to
     $0.032$, so $\lim_{q \to \infty} n_1(q)/q = 0$.
-    The asymptotic law of $n_1$ remains open; only the linear scaling hypothesis is excluded.
+    This exclusion stands on the measurements alone; the exact law of $n_1$ --- convergence to the
+    constant $22$ and inverse-square critical coverage --- is the interval theorem of the Critical
+    Coverage note~\cite{Beau2026ccnote}, for which the present out-of-sample values are the
+    transitional-regime data.
 
     Third, the covariance $\mathcal{C}_c$ in $\mathrm{End}(H_{\mathrm{eff}})$ has rank
     exactly~$3$ for every conjugate pair at $q \in \{61, 101, 151\}$, with invariant eigenvalue
@@ -428,12 +442,16 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
 
   \subsection{What remains open}
 
-    The following directions are explicitly open after O28:
-    \begin{itemize}
-      \item The asymptotic law of $n_1(q)$: the out-of-sample campaign (now carried to $q = 601$)
-      establishes $n_1(q)/q \to 0$ and excludes the linear law, but the sub-linear law itself is open.
-      \item Analytical derivation of the exact eigenvalue structure~\eqref{eq:eig_structure}.
-    \end{itemize}
+    One direction is explicitly open after O28: the analytical derivation of the exact eigenvalue
+    structure~\eqref{eq:eig_structure}.
+
+    The asymptotic law of $n_1(q)$ is established in the Critical Coverage
+    note~\cite{Beau2026ccnote}: every implemented Weil--BFS fingerprint is a Fourier character, the
+    cumulative rank is the sumset cardinality $r_c(n) = |T'_c + C\,I_{n+1}|$ with universal
+    shellwise ceiling $18$, and exact sphere counts of the infinite Heisenberg group give
+    $n_1(q) \to 22$ in probability with $x_1(q) \asymp q^{-2}$.
+    The out-of-sample campaign of the present paper supplies the transitional-regime data for that
+    theorem and excludes the linear law independently of it.
 
     The representation-theoretic direction (identification of the spin-$\tfrac{1}{2}$ sector
     $V_\rho$ and computation of $r_{\mathrm{eff}}$ in $\mathrm{End}(V_\rho)$) is
@@ -445,8 +463,10 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
   On the calibration side, $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$ for all
   $q \in \{29, 61, 101, 151, 211\}$, and the out-of-sample extension to $q = 601$ shows $n_1(q)/q$
   decreasing to $0.032$ and overpredicted by the linear fit by up to $+88\%$, establishing
-  $n_1(q)/q \to 0$; the linear scaling hypothesis is excluded, the sub-linear law otherwise remaining
-  open.
+  $n_1(q)/q \to 0$ and excluding the linear scaling hypothesis on the measurements alone.
+  The exact law of the window depth is the interval theorem of the Critical Coverage
+  note~\cite{Beau2026ccnote} --- $n_1(q) \to 22$ in probability, $x_1(q) \asymp q^{-2}$ --- and the
+  out-of-sample values reported here are its transitional-regime data.
 
   On the representation-theoretic side, the formal computation of O26 Criterion~5.4
   in $\mathrm{End}(H_{\mathrm{eff}})$ yields a clean and robust result: the covariance
