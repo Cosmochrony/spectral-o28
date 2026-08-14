@@ -62,8 +62,8 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     Second, using the per-block Weil vector projections $\pi_c(v)$ stored in the Q5a-O5
     checkpoints, we perform the formal effective-dimension computation of O26 Criterion~5.4
     in $\mathrm{End}(H_{\mathrm{eff}})$, where $H_{\mathrm{eff}} = \mathbb{C}^3$ is the
-    admissible projection space ($\mathrm{HEFF\_DIM} = 3$, consistent with $\Sigma_c(n_3) = 3$
-    from O23).
+    admissible projection space ($\mathrm{HEFF\_DIM} = 3$, consistent with the supplied
+    selection rule $\Sigma_c(n_3) = 3$ of O23).
     The covariance $\mathcal{C}_c$ has $1\%$ threshold rank
     $r_{\mathrm{eff}}^{1\%} = 3$ for every conjugate pair and every prime
     $q \in \{61, 101, 151\}$ (100\% of pairs), with normalised resolved spectrum
@@ -383,12 +383,15 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     The three resolved modes fill $H_{\mathrm{eff}}$ completely: at the stated numerical threshold,
     the trajectory of outer products $\widetilde{M}^s_j$ spans a 3-dimensional eigenspace of
     $\mathcal{C}_c$ within $\mathrm{End}(\mathbb{C}^3)$.
-    This is consistent with $\Sigma_c(n_3) = 3$ from O23~\cite{Beau2026a27}, which established
-    that the admissible subspace at the characteristic shell depth $n_3$ has dimension~$3$.
+    This is consistent with the supplied selection rule $\Sigma_c(n_3) = 3$ of
+    O23~\cite{Beau2026a27}: O23 proves the three-dimensionality of the neutral sector of a
+    supplied spinor carrier (Theorem~3.1), while the carrier selection and the identification
+    of $\Sigma_c$ with that dimension remain open there.
 
     The gap between $r_{\mathrm{eff}}^{1\%} = 3$ and the spin-$\tfrac{1}{2}$ prediction
     $d_\rho^2 = 4$ has a structural explanation established in O29~\cite{Beau2026a33}.
-    The anti-linear Born--Infeld parity $\rho_{q-c} = \bar\rho_c$ (O18) makes the conjugate-pair target
+    The anti-linear conjugation identity $\rho_{q-c} = \bar\rho_c$ (O17; recalled in O18
+    Theorem~3.1) makes the conjugate-pair target
     $d_\rho^2 = 4$ inaccessible by construction, and $r_{\mathrm{eff}} = 3$ identifies the irreducible adjoint
     carrier $H_{\mathrm{eff}} \simeq \mathrm{Sym}^2(V_\rho)$ (spin-$1$).
     The spin-$\tfrac{1}{2}$ space $V_\rho$ ($d_\rho = 2$) is recovered as the Veronese square-root structure of the
@@ -416,9 +419,10 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       conjugate pairs and all tested primes.
       O29~\cite{Beau2026a33} interprets this two-fold degeneracy as the axial
       $\mathrm{U}(1) \subset \mathrm{SO}(3)$ degeneracy of the spin-$1$ carrier.
-      The Born--Infeld parity involution $c \leftrightarrow q-c$ established in
-      O18~\cite{Beau2026a22} imposes $\rho_{q-c} = \bar\rho_c$ on the Weil representation and
-      restricts the outer products to a symmetric subspace.
+      The conjugation identity $\rho_{q-c} = \bar\rho_c$ (an O17 theorem, recalled in O18
+      Theorem~3.1~\cite{Beau2026a22}) holds on the Weil representation and
+      restricts the outer products to a symmetric subspace; the reading of the parity orbit
+      $\{c, q-c\}$ as a fibre of $\Pi$ remains the open bridge of O18 Remark~3.2.
       This conjugation symmetry correlates the two projections $\pi_c(v)$ and
       $\pi_{q-c}(v)$ entering~\eqref{eq:covariance_b}: the outer product
       $\widetilde{M}^s_j = \pi_c(v^{(s)}_j) \otimes \pi_{q-c}(v^{(s)}_j)^*$
@@ -453,7 +457,7 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     This result is robust: zero inter-pair variance at $q \in \{29, 101\}$, negligible at
     $q \in \{61, 151\}$.
     The three resolved modes fill $H_{\mathrm{eff}}$ completely and are consistent with
-    $\Sigma_c(n_3) = 3$ from O23.
+    the supplied selection rule $\Sigma_c(n_3) = 3$ of O23.
 
   \subsection{What remains open}
 
@@ -490,8 +494,8 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
   $\mathcal{C}_c$ has $1\%$ threshold rank~$3$ with invariant normalised resolved spectrum
   $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$ across all conjugate pairs and all primes
   $q \in \{61, 101, 151\}$.
-  This fills $H_{\mathrm{eff}} = \mathbb{C}^3$ completely, consistent with
-  $\Sigma_c(n_3) = 3$ from O23~\cite{Beau2026a27}.
+  This fills $H_{\mathrm{eff}} = \mathbb{C}^3$ completely, consistent with the supplied
+  selection rule $\Sigma_c(n_3) = 3$ of O23~\cite{Beau2026a27}.
   The gap from the spin-$\tfrac{1}{2}$ prediction $d_\rho^2 = 4$ is resolved
   in O29~\cite{Beau2026a33}: the anti-linear Born--Infeld parity makes $d_\rho^2 = 4$ inaccessible from
   conjugate-pair data, and $r_{\mathrm{eff}} = 3$ identifies the spin-$1$ carrier
