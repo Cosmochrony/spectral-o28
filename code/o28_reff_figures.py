@@ -129,7 +129,7 @@ def make_figure(qs, data, outpath):
     ax.set_xlabel("eigenvalue index $i$  of $\\mathcal{C}_c$ in $\\mathrm{End}(H_{\\mathrm{eff}})$")
     ax.set_ylabel("$\\lambda_i / \\lambda_1$")
     ax.set_title(f"(c) Normalised eigenvalue structure of $\\mathcal{{C}}_c$\n"
-                 f"(rank 3 fills $\\mathrm{{End}}(H_{{\\mathrm{{eff}}}})$,"
+                 f"(3 resolved modes at the $1\\%$ threshold,"
                  f" $\\mathrm{{HEFF\\_DIM}}={HEFF_DIM}$)")
     ax.set_xticks([1, 2, 3])
     ax.set_xticklabels(["$\\lambda_1$", "$\\lambda_2$", "$\\lambda_3$"])

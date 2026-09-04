@@ -198,7 +198,7 @@ def plot_n1_calibration(results, slope, intercept, outdir, delta_rows=None):
     ax.grid(True, alpha=0.25)
     ax.tick_params(direction="in")
 
-    # Panel (c): raw vs O14-corrected delta_pair
+    # Panel (c): raw vs adjusted delta_pair
     if delta_rows:
         ax = axes[2]
         dqs   = np.array([r["q"]              for r in delta_rows], dtype=float)
@@ -206,17 +206,17 @@ def plot_n1_calibration(results, slope, intercept, outdir, delta_rows=None):
         dstds = np.array([r["delta_pair_std"]  for r in delta_rows])
         dcorr = np.array([r["delta_corr"]      for r in delta_rows])
         ax.axhspan(ADMISSIBLE_LO, ADMISSIBLE_HI, alpha=0.12, color=COLOR_WIN,
-                   label=f"admissible $[{ADMISSIBLE_LO},{ADMISSIBLE_HI}]$")
+                   label=f"target $[{ADMISSIBLE_LO},{ADMISSIBLE_HI}]$")
         ax.errorbar(dqs, dbars, yerr=dstds, fmt="o", color=COLOR_RAW,
                     capsize=4, lw=1.2, label=r"$\bar{\delta}_{\rm pair}$ (raw)")
         ax.plot(dqs, dcorr, "s--", color=COLOR_CORR, markersize=7, lw=1.4,
-                label=r"$\delta_{\rm corr}$ (O14-corrected)")
+                label=r"$\delta_{\rm corr}$ (adjusted)")
         for q, dc in zip(dqs, dcorr):
             ax.annotate(f"{dc:.2f}", (q, dc), textcoords="offset points",
                         xytext=(5, 3), fontsize=8, color=COLOR_CORR)
         ax.set_xlabel("prime $q$")
         ax.set_ylabel(r"$\delta_{\rm pair}$")
-        ax.set_title(r"(c) Raw vs corrected $\delta_{\rm pair}$")
+        ax.set_title(r"(c) Raw vs adjusted $\delta_{\rm pair}$")
         ax.legend(fontsize=8)
         ax.grid(True, alpha=0.25)
         ax.tick_params(direction="in")

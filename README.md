@@ -15,8 +15,10 @@ O28 reports two measurements from the Q5a–O5 checkpoints:
   $n_1(q)/q$ decreases to $0.032$.
   The declared finite-size adjustment
   $\delta_{\mathrm{corr}}(q) = \bar{\delta}_{\mathrm{pair}}(q) - \eta\log q/\log n_1(q)$ lies in
-  $[7.4, 10.6]$ across the full range. O14 establishes that this term does not correct the intra-$q$
-  fitted exponent, so the stability is a diagnostic and not a corrected capacity exponent.
+  the target window $[7.4, 10.6]$ over $q \in \{29, 61, 101, 151, 211\}$; O25 reports the same
+  adjustment overcorrecting beyond that range, to $6.53$ at $q = 601$. O14 establishes that the
+  term does not correct the intra-$q$ fitted exponent, so the stability is a diagnostic and not a
+  corrected capacity exponent.
 - **Part B — effective dimension.** Over the samples of the paper's perimeter, the per-pair
   covariance operator $\mathcal{C}_c \in \mathrm{End}(H_{\mathrm{eff}})$,
   $H_{\mathrm{eff}} = \mathbb{C}^3$, has $1\%$ threshold rank $r_{\mathrm{eff}}^{1\%} = 3$ for
@@ -46,8 +48,9 @@ O28 follows the chain:
 - **O25**: evidence for $\delta_{\mathrm{pair}}$ as a structural invariant; the role of $n_1(q)/q$.
 - **O26**: representation-theoretic dictionary and the effective-dimension test (Criterion 5.4).
 - **O27**: every admissible morphism factors uniquely through the admissibility quotient, with the
-  canonical $\mathfrak{su}(2)$ action on $\mathrm{End}(V_\rho)$ under the conditionally supplied
-  carrier; the vector lift is open.
+  canonical $\mathfrak{su}(2)$ action on $\mathrm{End}(V_\rho)$ under two premises, the
+  identification of the admissible image with the neutral traceless sector (assumed and derived
+  nowhere) and the conditionally supplied spinor carrier of O23; the vector lift is open.
 - **O29**: audit of what the O28 covariance does and does not identify; the $3$-vs-$4$ dimension gap
   stays open.
 
@@ -64,5 +67,5 @@ and Code Availability section.
 ## Keywords
 
 spectral admissibility, BFS window depth, pair observable, Weil representation, Heisenberg
-graphs, capacity exponent, normalisation correction, covariance operator, effective dimension,
+graphs, capacity exponent, finite-size adjustment, covariance operator, effective dimension,
 admissible trajectory, Born–Infeld saturation

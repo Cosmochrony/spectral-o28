@@ -88,7 +88,7 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
 
   \paragraph{Keywords.}
     spectral admissibility; BFS window depth; pair observable; Weil representation; Heisenberg graphs; capacity
-    exponent; normalisation correction; covariance operator; effective dimension; admissible trajectory; Born--Infeld
+    exponent; finite-size adjustment; covariance operator; effective dimension; admissible trajectory; Born--Infeld
     saturation
 
     \clearpage
@@ -106,10 +106,12 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     (i) the inter-pair standard deviation of $\delta_{\mathrm{pair}}$ decreases monotonically
     from $0.54$ at $q = 29$ to $0.11$ at $q = 211$, strengthening the evidence that
     $\delta_{\mathrm{pair}}$ is a structural invariant of the Weil representation;
-    (ii) empirical fits carry no asymptotic meaning because the leading finite-size correction
+    (ii) empirical fits carry no asymptotic meaning because the leading finite-size term
     $\eta\log q/\log n_1(q) \approx 1$ is itself $q$-dependent;
-    (iii) after the finite-size adjustment $\eta\log q/\log n_1(q)$ of~\eqref{eq:dcorr}, the
-    adjusted values fall within the window $[7.4, 10.6]$.
+    (iii) the raw $\delta_{\mathrm{global}}(q)$ descends into the target window $[7.4, 10.6]$
+    unaided, reaching $7.61$ at $q = 601$, while the finite-size adjustment
+    $\eta\log q/\log n_1(q)$ of~\eqref{eq:dcorr} becomes progressively unnecessary and
+    overcorrects beyond $q = 211$, sending the adjusted value below $7.4$.
     O25 identified the ratio $n_1(q)/q$ as the central open direction.
 
     Paper O26~\cite{Beau2026a30} established a dictionary between conjugate Weil blocks and
@@ -129,9 +131,9 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     Paper O27~\cite{Beau2026a31} shows that any morphism satisfying the three structural
     constraints factors uniquely through the admissibility quotient, and exhibits the canonical
     representation action $\rho \colon \mathfrak{su}(2) \to \operatorname{End}(V_\rho)$ under two
-    premises: the identification of the admissible image with the neutral traceless sector,
-    $\operatorname{Im}\Pi_{\mathrm{adm}} = \mathrm{Ntrl}$, which is assumed and derived nowhere,
-    and the spinor carrier supplied conditionally by O23.
+    premises: the identification of the admissible image with the neutral traceless sector of the
+    ambient observable space, which O27 assumes and derives nowhere, and the spinor carrier
+    supplied conditionally by O23.
     The vector lift asked for in O26 Hypothesis~4.4 remains open.
     The full implication chain
     \[
@@ -206,9 +208,9 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       \centering
       \caption{BFS window depth and asymptotic ratio.
         $\bar{\delta}_{\mathrm{pair}}(q)$: mean of $\delta_{\mathrm{pair}}$ over all conjugate pairs.
-        $\eta \log q / \log n_1$: O14 correction factor~\eqref{eq:dcorr} with $\eta = 1/2$.
-        $\delta_{\mathrm{corr}}$: corrected exponent.
-        Admissible window: $[7.4, 10.6]$.}
+        $\eta \log q / \log n_1$: adjustment term~\eqref{eq:dcorr} with $\eta = 1/2$.
+        $\delta_{\mathrm{corr}}$: adjusted value.
+        Target window $[7.4, 10.6]$, taken by O25 from O10.}
       \label{tab:window}
       \begin{tabular}{rrrrrrl}
         \toprule
@@ -281,11 +283,13 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
 
   \subsection{Stability of \texorpdfstring{$\delta_{\mathrm{corr}}(q)$}{delta-corr(q)}}
 
-    From Table~\ref{tab:window}, the correction factor $\eta \log q / \log n_1(q)$ lies in
+    From Table~\ref{tab:window}, the adjustment term $\eta \log q / \log n_1(q)$ lies in
     $[0.96, 1.21]$ over the tested range.
     For all $q \in \{29, 61, 101, 151, 211\}$, the adjusted value
-    $\delta_{\mathrm{corr}}(q)$ falls within the window $[7.4, 10.6]$, the range reported by
-    O25~\cite{Beau2026a29} for the same adjustment.
+    $\delta_{\mathrm{corr}}(q)$ falls within $[7.4, 10.6]$, the target window that
+    O25~\cite{Beau2026a29} takes from O10.
+    Beyond that range the same adjustment overcorrects: O25 reports it sending the adjusted value
+    to $6.53$ at $q = 601$, below the window that the raw observable reaches unaided.
     By the fixed-$q$ slope invariance of O14~\cite{Beau2026a18}, this stability is a property of
     the declared adjustment: it does not establish that the finite-size drift of
     $\bar{\delta}_{\mathrm{pair}}(q)$ is a normalisation effect.
@@ -298,8 +302,8 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
         (b)~Ratio $n_1(q)/q$: monotonically decreasing from $0.138$ to $0.066$; the out-of-sample
         extension (Table~\ref{tab:n1oos}) continues this decrease to $0.032$ at $q = 601$.
         (c)~Raw $\bar\delta_{\mathrm{pair}}(q)$ with inter-pair standard deviation error bars
-        and O14-corrected $\delta_{\mathrm{corr}}(q)$; all corrected values lie within the
-        admissible window $[7.4,10.6]$ (shaded).}
+        and adjusted $\delta_{\mathrm{corr}}(q)$; over these five primes all adjusted values lie
+        within the target window $[7.4,10.6]$ (shaded).}
       \label{fig:part_a}
     \end{figure}
 
@@ -457,7 +461,7 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
 
     Three results are established from the full dataset.
 
-    First, the declared finite-size adjustment is stable across the full tested range:
+    First, the declared finite-size adjustment is stable over the calibration primes:
     $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$ for all $q \in \{29, 61, 101, 151, 211\}$.
     O14~\cite{Beau2026a18} establishes that this term does not correct the intra-$q$ fitted
     exponent, so the stability is a diagnostic and carries no claim that the drift of
@@ -507,7 +511,7 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
 
   \section{Conclusion}
 
-  O28 closes two open directions of the post-O27 programme.
+  O28 reports two measurements on the post-O27 programme.
   On the calibration side, the declared finite-size adjustment lies in $[7.4, 10.6]$ for all
   $q \in \{29, 61, 101, 151, 211\}$ without correcting the intra-$q$ fitted exponent, and the
   out-of-sample extension to $q = 601$ shows $n_1(q)/q$
