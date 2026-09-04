@@ -64,22 +64,24 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     in $\mathrm{End}(H_{\mathrm{eff}})$, where $H_{\mathrm{eff}} = \mathbb{C}^3$ is the
     admissible projection space ($\mathrm{HEFF\_DIM} = 3$, consistent with the supplied
     selection rule $\Sigma_c(n_3) = 3$ of O23).
-    The covariance $\mathcal{C}_c$ has $1\%$ threshold rank
-    $r_{\mathrm{eff}}^{1\%} = 3$ for every conjugate pair and every prime
-    $q \in \{61, 101, 151\}$ (100\% of pairs), with normalised resolved spectrum
-    $[\lambda_1 : \lambda_2 : \lambda_3] = [1 : \tfrac{1}{2} : \tfrac{1}{2}]$
-    invariant across all pairs and primes.
-    These three resolved modes fill $H_{\mathrm{eff}}$ completely.
+    Over the samples of the present perimeter, the covariance $\mathcal{C}_c$ has $1\%$ threshold
+    rank $r_{\mathrm{eff}}^{1\%} = 3$ for every conjugate pair at $q \in \{61, 101, 151\}$, with
+    normalised resolved spectrum
+    $[\lambda_1 : \lambda_2 : \lambda_3] = [1 : \tfrac{1}{2} : \tfrac{1}{2}]$.
+    This is a finite-data value of the stated protocol and not an invariant: the extended
+    recomputation of O29 finds rank three modal, at $32/50$ pairs for $q = 101$ and $103/105$ for
+    $q = 211$.
+    These three resolved modes fill $H_{\mathrm{eff}}$ at the stated threshold.
     The gap from the spin-$\tfrac{1}{2}$ prediction $d_\rho^2 = 4$ reflects that
-    $H_{\mathrm{eff}} \neq V_\rho$.
-    The structural resolution of this gap is established in O29:
-    the anti-linear Born--Infeld parity makes the target $d_\rho^2 = 4$ inaccessible from conjugate-pair data, and
-    $r_{\mathrm{eff}} = 3$ identifies the irreducible adjoint carrier $H_{\mathrm{eff}} \simeq \mathrm{Sym}^2(V_\rho)$
-    (spin-$1$); the spin-$\tfrac{1}{2}$ space $V_\rho$ ($d_\rho = 2$) is recovered as the Veronese square-root
-    structure, not as the rank measured by Test~4.
+    $H_{\mathrm{eff}} \neq V_\rho$, and stays open.
+    O29 audits what the measurement identifies: the projected-coordinate relation
+    $\pi_{q-c}(v) = \overline{\pi_c(v)}$ is motivated by the Weil-block identity
+    $\rho_{q-c} = \bar\rho_c$ without following from it, the finite-precision diagnostics are
+    compatible with an adjoint reading of $H_{\mathrm{eff}}$ without deriving that carrier, and
+    $V_\rho$ is supplied elsewhere rather than recovered from these data.
     Interpretively, the combined result separates a finite-$q$ calibration diagnostic from its
-    now-proved asymptotic law and separates a covariance-carrier measurement from a direct
-    measurement of the spin-$\tfrac{1}{2}$ dimension.
+    now-proved asymptotic law, and leaves the spin-$\tfrac{1}{2}$ dimension unmeasured by the
+    conjugate-pair covariance.
   \end{abstract}
 
   \paragraph{Keywords.}
@@ -391,36 +393,41 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     of $\Sigma_c$ with that dimension remain open there.
 
     The gap between $r_{\mathrm{eff}}^{1\%} = 3$ and the spin-$\tfrac{1}{2}$ prediction
-    $d_\rho^2 = 4$ has a structural explanation established in O29~\cite{Beau2026a33}.
+    $d_\rho^2 = 4$ is audited in O29~\cite{Beau2026a33}.
     The anti-linear conjugation identity $\rho_{q-c} = \bar\rho_c$ (O17; recalled in O18
-    Theorem~3.1) makes the conjugate-pair target
-    $d_\rho^2 = 4$ inaccessible by construction, and $r_{\mathrm{eff}} = 3$ identifies the irreducible adjoint
-    carrier $H_{\mathrm{eff}} \simeq \mathrm{Sym}^2(V_\rho)$ (spin-$1$).
-    The spin-$\tfrac{1}{2}$ space $V_\rho$ ($d_\rho = 2$) is recovered as the Veronese square-root structure of the
-    data, not as the rank measured by Test~4.
+    Theorem~3.1) holds on the Weil representation; the corresponding relation on the projected
+    coordinates, $\pi_{q-c}(v) = \overline{\pi_c(v)}$, is motivated by it without following from it,
+    and the stored data satisfy it only approximately.
+    The measurement therefore constrains the carrier visible to the conjugate-pair covariance and
+    identifies no representation: $H_{\mathrm{eff}}$ is not identified with
+    $\mathrm{Sym}^2(V_\rho)$, and $V_\rho$ is supplied elsewhere rather than recovered from these
+    data.
 
-    \begin{remark}[Resolution of O26 Criterion~5.4 in O29]
+    \begin{remark}[Status of O26 Criterion~5.4]
       \label{rem:status}
-      The threshold-rank result $r_{\mathrm{eff}}^{1\%} = 3$ observed in the present paper is
-      explained
-      in O29~\cite{Beau2026a33} as follows.
-      The anti-linear Born--Infeld parity $\pi_{q-c}(v) = \overline{\pi_c(v)}$ makes every outer product
-      $\widetilde{M}_j$ complex symmetric, so the conjugate-pair target $d_\rho^2 = 4$ of O26 Criterion~5.4 is
-      inaccessible by construction.
-      The observed $r_{\mathrm{eff}} = 3$ identifies the irreducible adjoint carrier
-      $H_{\mathrm{eff}} \simeq \mathrm{Sym}^2(V_\rho)$ (spin-$1$); the spin-$\tfrac{1}{2}$ space $V_\rho$
-      ($d_\rho = 2$) is recovered as the Veronese square-root structure of the data, which lie on the cone of
-      rank-one symmetric squares, not as the quantity measured by Test~4.
-      The exact eigenvalue structure $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$ reflects the axial symmetry of the
-      spin-$1$ carrier (the degeneracy $\lambda_2 = \lambda_3$; see Remark~\ref{rem:degeneracy}).
+      The threshold-rank result $r_{\mathrm{eff}}^{1\%} = 3$ observed in the present paper is audited
+      in O29~\cite{Beau2026a33}, which separates three spaces: the measured trajectory span in
+      $H_{\mathrm{eff}}$, a data-dependent leading truncation inside it, and the spin-$\tfrac{1}{2}$
+      module $V_\rho$, supplied elsewhere.
+      Under the projected-coordinate relation $\pi_{q-c}(v) = \overline{\pi_c(v)}$ every outer product
+      $\widetilde{M}_j$ is complex symmetric, so the conjugate-pair target $d_\rho^2 = 4$ of O26
+      Criterion~5.4 is not attainable; that relation is motivated by the conjugation identity
+      $\rho_{q-c} = \bar\rho_c$ without following from it, and the stored data satisfy it only
+      approximately.
+      The finite-precision diagnostics of O29 are compatible with an adjoint reading of
+      $H_{\mathrm{eff}}$ and do not derive that carrier, prove exact irreducibility, or supply an
+      embedding of $V_\rho$.
+      The eigenvalue structure $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$ accordingly has no derivation here
+      (the degeneracy $\lambda_2 = \lambda_3$; see Remark~\ref{rem:degeneracy}).
     \end{remark}
 
     \begin{remark}[Structural interpretation of the observed degeneracy $\lambda_2 = \lambda_3$]
       \label{rem:degeneracy}
-      The equality $\lambda_2 = \lambda_3$ is observed, within numerical precision, across all
-      conjugate pairs and all tested primes.
-      O29~\cite{Beau2026a33} interprets this two-fold degeneracy as the axial
-      $\mathrm{U}(1) \subset \mathrm{SO}(3)$ degeneracy of the spin-$1$ carrier.
+      The equality $\lambda_2 = \lambda_3$ is observed, within numerical precision, across the
+      conjugate pairs and primes of the present perimeter.
+      Reading this two-fold degeneracy as the axial $\mathrm{U}(1) \subset \mathrm{SO}(3)$
+      degeneracy of a spin-$1$ carrier presupposes that carrier; O29~\cite{Beau2026a33} does not
+      derive it from these data.
       The conjugation identity $\rho_{q-c} = \bar\rho_c$ (an O17 theorem, recalled in O18
       Theorem~3.1~\cite{Beau2026a22}) holds on the Weil representation and
       restricts the outer products to a symmetric subspace; the reading of the parity orbit
@@ -435,7 +442,7 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
 
   \section{Discussion}
 
-  \subsection{What O28 establishes unconditionally}
+  \subsection{What O28 establishes}
 
     Three results are established from the full dataset.
 
@@ -453,12 +460,16 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     Critical Coverage note~\cite{Beau2026ccnote}, which identifies the present values as
     transitional-regime data.
 
-    Third, the covariance $\mathcal{C}_c$ in $\mathrm{End}(H_{\mathrm{eff}})$ has $1\%$ threshold
-    rank~$3$ for every conjugate pair at $q \in \{61, 101, 151\}$, with invariant resolved
-    eigenvalue structure $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$.
-    This result is robust: zero inter-pair variance at $q \in \{29, 101\}$, negligible at
-    $q \in \{61, 151\}$.
-    The three resolved modes fill $H_{\mathrm{eff}}$ completely and are consistent with
+    Third, over the samples of the present perimeter the covariance $\mathcal{C}_c$ in
+    $\mathrm{End}(H_{\mathrm{eff}})$ has $1\%$ threshold rank~$3$ for every conjugate pair at
+    $q \in \{61, 101, 151\}$, with resolved eigenvalue structure
+    $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$, zero inter-pair variance at $q \in \{29, 101\}$ and
+    negligible inter-pair variance at $q \in \{61, 151\}$.
+    This is a finite-data measurement of the stated protocol rather than an invariant: the extended
+    recomputation of O29~\cite{Beau2026a33} finds rank three modal, at $32/50$ pairs for $q = 101$
+    and $103/105$ for $q = 211$, and records the $q = 101$ dispersion as seed-sensitive and
+    unresolved there.
+    The three resolved modes fill $H_{\mathrm{eff}}$ at the stated threshold and are consistent with
     the supplied selection rule $\Sigma_c(n_3) = 3$ of O23.
 
   \subsection{What remains open}
@@ -475,8 +486,10 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     theorem as transitional and independently rejects the calibrated linear extrapolation.
 
     The representation-theoretic direction (identification of the spin-$\tfrac{1}{2}$ sector
-    $V_\rho$ and computation of $r_{\mathrm{eff}}$ in $\mathrm{End}(V_\rho)$) is
-    completed in O29~\cite{Beau2026a33}; see Remark~\ref{rem:status} above.
+    $V_\rho$ and computation of $r_{\mathrm{eff}}$ in $\mathrm{End}(V_\rho)$) is open.
+    O29~\cite{Beau2026a33} audits what the present covariance identifies and states that a genuine
+    spin-$\tfrac{1}{2}$ test requires an independent observable and a typed bridge to $V_\rho$; see
+    Remark~\ref{rem:status} above.
 
   \section{Conclusion}
 
@@ -492,17 +505,17 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
   here are its transitional-regime data.
 
   On the representation-theoretic side, the formal computation of O26 Criterion~5.4
-  in $\mathrm{End}(H_{\mathrm{eff}})$ yields a clean and robust result: the covariance
-  $\mathcal{C}_c$ has $1\%$ threshold rank~$3$ with invariant normalised resolved spectrum
-  $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$ across all conjugate pairs and all primes
-  $q \in \{61, 101, 151\}$.
-  This fills $H_{\mathrm{eff}} = \mathbb{C}^3$ completely, consistent with the supplied
+  in $\mathrm{End}(H_{\mathrm{eff}})$ yields, over the present perimeter, $1\%$ threshold rank~$3$
+  for the covariance $\mathcal{C}_c$, with normalised resolved spectrum
+  $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$ at every conjugate pair and every prime
+  $q \in \{61, 101, 151\}$; the extended recomputation of O29~\cite{Beau2026a33} finds that rank
+  modal rather than invariant.
+  It fills $H_{\mathrm{eff}} = \mathbb{C}^3$ at the stated threshold, consistent with the supplied
   selection rule $\Sigma_c(n_3) = 3$ of O23~\cite{Beau2026a27}.
-  The gap from the spin-$\tfrac{1}{2}$ prediction $d_\rho^2 = 4$ is resolved
-  in O29~\cite{Beau2026a33}: the anti-linear Born--Infeld parity makes $d_\rho^2 = 4$ inaccessible from
-  conjugate-pair data, and $r_{\mathrm{eff}} = 3$ identifies the spin-$1$ carrier
-  $H_{\mathrm{eff}} \simeq \mathrm{Sym}^2(V_\rho)$; the spin-$\tfrac{1}{2}$ space $V_\rho$ ($d_\rho = 2$) is the
-  Veronese square-root structure.
+  The gap from the spin-$\tfrac{1}{2}$ prediction $d_\rho^2 = 4$ stays open.
+  O29~\cite{Beau2026a33} audits it and identifies no representation: the projected-coordinate
+  relation that makes the target unattainable is motivated and unproved, the adjoint reading of
+  $H_{\mathrm{eff}}$ is supplied rather than derived, and $V_\rho$ is not recovered from these data.
 
   \subsection*{Interpretive outlook}
 
