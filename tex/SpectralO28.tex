@@ -56,9 +56,11 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     probability for five independently and uniformly sampled generic blocks, with critical
     coverage $x_1(q) = |B_{n_1}|/q^2 \asymp q^{-2}$; the measured decrease of $n_1(q)/q$ belongs
     to the transitional resonance regime of that law.
-    The O14 correction yields
-    $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$
-    for all $q \in \{29, 61, 101, 151, 211\}$, confirming the structural conclusion of O25.
+    The declared finite-size adjustment
+    $\delta_{\mathrm{corr}}(q) = \bar{\delta}_{\mathrm{pair}}(q) - \eta\log q/\log n_1(q)$
+    lies in $[7.4, 10.6]$ for all $q \in \{29, 61, 101, 151, 211\}$; O14 establishes that this term
+    does not correct the intra-$q$ fitted exponent, so the stability is a diagnostic and not a
+    corrected capacity exponent.
     Second, using the per-block Weil vector projections $\pi_c(v)$ stored in the Q5a-O5
     checkpoints, we perform the formal effective-dimension computation of O26 Criterion~5.4
     in $\mathrm{End}(H_{\mathrm{eff}})$, where $H_{\mathrm{eff}} = \mathbb{C}^3$ is the
@@ -80,7 +82,7 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     compatible with an adjoint reading of $H_{\mathrm{eff}}$ without deriving that carrier, and
     $V_\rho$ is supplied elsewhere rather than recovered from these data.
     Interpretively, the combined result separates a finite-$q$ calibration diagnostic from its
-    now-proved asymptotic law, and leaves the spin-$\tfrac{1}{2}$ dimension unmeasured by the
+    proved asymptotic law, and leaves the spin-$\tfrac{1}{2}$ dimension unmeasured by the
     conjugate-pair covariance.
   \end{abstract}
 
@@ -102,12 +104,12 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     $\sigma_{\mathrm{pair}}(n) = \sigma_c(n)\,\sigma_{q-c}(n)$ on
     $\mathrm{Heis}_3(\mathbb{Z}/q\mathbb{Z})$:
     (i) the inter-pair standard deviation of $\delta_{\mathrm{pair}}$ decreases monotonically
-    from $0.54$ at $q = 29$ to $0.11$ at $q = 211$, confirming that $\delta_{\mathrm{pair}}$
-    is a structural invariant of the Weil representation;
+    from $0.54$ at $q = 29$ to $0.11$ at $q = 211$, strengthening the evidence that
+    $\delta_{\mathrm{pair}}$ is a structural invariant of the Weil representation;
     (ii) empirical fits carry no asymptotic meaning because the leading finite-size correction
     $\eta\log q/\log n_1(q) \approx 1$ is itself $q$-dependent;
-    (iii) when the O14 correction is applied, the corrected values fall within the admissible
-    window $[7.4, 10.6]$.
+    (iii) after the finite-size adjustment $\eta\log q/\log n_1(q)$ of~\eqref{eq:dcorr}, the
+    adjusted values fall within the window $[7.4, 10.6]$.
     O25 identified the ratio $n_1(q)/q$ as the central open direction.
 
     Paper O26~\cite{Beau2026a30} established a dictionary between conjugate Weil blocks and
@@ -126,8 +128,10 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
 
     Paper O27~\cite{Beau2026a31} shows that any morphism satisfying the three structural
     constraints factors uniquely through the admissibility quotient, and exhibits the canonical
-    representation action $\rho \colon \mathfrak{su}(2) \to \operatorname{End}(V_\rho)$, under the
-    spinor carrier supplied conditionally by O23.
+    representation action $\rho \colon \mathfrak{su}(2) \to \operatorname{End}(V_\rho)$ under two
+    premises: the identification of the admissible image with the neutral traceless sector,
+    $\operatorname{Im}\Pi_{\mathrm{adm}} = \mathrm{Ntrl}$, which is assumed and derived nowhere,
+    and the spinor carrier supplied conditionally by O23.
     The vector lift asked for in O26 Hypothesis~4.4 remains open.
     The full implication chain
     \[
@@ -136,9 +140,9 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       \Rightarrow \mathfrak{su}(2)
     \]
     is thereby carried at the structural level, with arrows of unequal type.
-    The numerical identification of the correct irreducible sector from the covariance
-    structure of the admissible trajectory is addressed in the present paper (Part~B)
-    and completed in O29~\cite{Beau2026a33}.
+    What the covariance structure of the admissible trajectory measures is the object of the
+    present paper (Part~B) and of the audit in O29~\cite{Beau2026a33}; no irreducible sector is
+    identified there.
 
   \subsection{Scope of O28}
 
@@ -150,7 +154,7 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
       \item \textbf{Part~B}: perform the formal effective-dimension computation of
       O26 Criterion~5.4 using the per-block Weil vector projections $\pi_c(v) \in H_{\mathrm{eff}}$
       stored in the Q5a-O5 checkpoints, and determine what the covariance structure of
-      $\mathcal{C}_c$ in $\mathrm{End}(H_{\mathrm{eff}})$ reveals about the irreducible sector.
+      $\mathcal{C}_c$ in $\mathrm{End}(H_{\mathrm{eff}})$ measures.
     \end{enumerate}
 
   \section{Setup and Notation}
@@ -166,12 +170,18 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
   The fitting window $[n_0, n_1]$ is auto-calibrated from the BFS data via the
   \texttt{find\_fitting\_window} procedure of O12~\cite{Beau2026a16}, with
   $\mathrm{bfs\_frac} = 0.99$.
-  The O14 normalisation correction~\cite{Beau2026a18} gives
+  The finite-size adjustment used throughout is
   \begin{equation}
     \delta_{\mathrm{corr}}(q) = \bar{\delta}_{\mathrm{pair}}(q) - \eta\,
     \frac{\log q}{\log n_1(q)}, \qquad \eta = \tfrac{1}{2}.
     \label{eq:dcorr}
   \end{equation}
+  It is a declared diagnostic on the measured window depths, not a derived exponent.
+  O14~\cite{Beau2026a18} establishes that a factor $q^{-\eta}$ changes the intercept of a
+  fixed-$q$ regression and leaves its fitted slope invariant, so the term $\eta\log q/\log n_1(q)$
+  does not correct the intra-$q$ fitted $\bar{\delta}_{\mathrm{pair}}(q)$; the endpoint exponent of
+  an amplitude-renormalised fit carries that term with a plus sign together with the fitted
+  amplitude, and the exact pipeline selects neither $\eta$ nor an endpoint or inter-$q$ estimator.
   The Q5a-O5 pipeline additionally stores, for each conjugate pair $(c, q-c)$ and each
   window shell $s$, the per-vector $H_{\mathrm{eff}}$-projections
   \begin{equation}
@@ -273,11 +283,12 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
 
     From Table~\ref{tab:window}, the correction factor $\eta \log q / \log n_1(q)$ lies in
     $[0.96, 1.21]$ over the tested range.
-    For all $q \in \{29, 61, 101, 151, 211\}$, the corrected exponent
-    $\delta_{\mathrm{corr}}(q)$ falls within the admissible window $[7.4, 10.6]$,
-    confirming the main structural conclusion of O25~\cite{Beau2026a29}: the finite-size
-    drift of $\bar{\delta}_{\mathrm{pair}}(q)$ is a normalisation effect, not a structural
-    deviation.
+    For all $q \in \{29, 61, 101, 151, 211\}$, the adjusted value
+    $\delta_{\mathrm{corr}}(q)$ falls within the window $[7.4, 10.6]$, the range reported by
+    O25~\cite{Beau2026a29} for the same adjustment.
+    By the fixed-$q$ slope invariance of O14~\cite{Beau2026a18}, this stability is a property of
+    the declared adjustment: it does not establish that the finite-size drift of
+    $\bar{\delta}_{\mathrm{pair}}(q)$ is a normalisation effect.
 
     \begin{figure}[ht]
       \centering
@@ -384,7 +395,7 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
   \subsection{Interpretation}
     \label{sec:interp}
 
-    The three resolved modes fill $H_{\mathrm{eff}}$ completely: at the stated numerical threshold,
+    The three resolved modes fill $H_{\mathrm{eff}}$ at the stated numerical threshold:
     the trajectory of outer products $\widetilde{M}^s_j$ spans a 3-dimensional eigenspace of
     $\mathcal{C}_c$ within $\mathrm{End}(\mathbb{C}^3)$.
     This is consistent with the supplied selection rule $\Sigma_c(n_3) = 3$ of
@@ -446,10 +457,11 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
 
     Three results are established from the full dataset.
 
-    First, the O14 normalisation correction is structurally coherent across the full tested range:
-    $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$ for all $q \in \{29, 61, 101, 151, 211\}$,
-    confirming that the finite-size drift of $\bar{\delta}_{\mathrm{pair}}(q)$ is a
-    normalisation effect.
+    First, the declared finite-size adjustment is stable across the full tested range:
+    $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$ for all $q \in \{29, 61, 101, 151, 211\}$.
+    O14~\cite{Beau2026a18} establishes that this term does not correct the intra-$q$ fitted
+    exponent, so the stability is a diagnostic and carries no claim that the drift of
+    $\bar{\delta}_{\mathrm{pair}}(q)$ is a normalisation effect.
 
     Second, the out-of-sample extension of the window-depth measurement at the four primes
     $307$, $401$, $503$, and $601$ makes the calibrated OLS extrapolation fail: it overpredicts
@@ -469,6 +481,8 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
     recomputation of O29~\cite{Beau2026a33} finds rank three modal, at $32/50$ pairs for $q = 101$
     and $103/105$ for $q = 211$, and records the $q = 101$ dispersion as seed-sensitive and
     unresolved there.
+    That run does not reproduce the zero inter-pair variance reported here at $q = 101$, and no
+    sampling seed is recorded on either side.
     The three resolved modes fill $H_{\mathrm{eff}}$ at the stated threshold and are consistent with
     the supplied selection rule $\Sigma_c(n_3) = 3$ of O23.
 
@@ -494,8 +508,9 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
   \section{Conclusion}
 
   O28 closes two open directions of the post-O27 programme.
-  On the calibration side, $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$ for all
-  $q \in \{29, 61, 101, 151, 211\}$, and the out-of-sample extension to $q = 601$ shows $n_1(q)/q$
+  On the calibration side, the declared finite-size adjustment lies in $[7.4, 10.6]$ for all
+  $q \in \{29, 61, 101, 151, 211\}$ without correcting the intra-$q$ fitted exponent, and the
+  out-of-sample extension to $q = 601$ shows $n_1(q)/q$
   decreasing to $0.032$ while the calibrated linear fit overpredicts $n_1$ by up to $+88\%$.
   These measurements reject that extrapolation over the tested range but do not alone establish an
   asymptotic limit.
@@ -510,7 +525,8 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
   $[1 : \tfrac{1}{2} : \tfrac{1}{2}]$ at every conjugate pair and every prime
   $q \in \{61, 101, 151\}$; the extended recomputation of O29~\cite{Beau2026a33} finds that rank
   modal rather than invariant.
-  It fills $H_{\mathrm{eff}} = \mathbb{C}^3$ at the stated threshold, consistent with the supplied
+  The three resolved modes fill $H_{\mathrm{eff}} = \mathbb{C}^3$ at the stated threshold,
+  consistent with the supplied
   selection rule $\Sigma_c(n_3) = 3$ of O23~\cite{Beau2026a27}.
   The gap from the spin-$\tfrac{1}{2}$ prediction $d_\rho^2 = 4$ stays open.
   O29~\cite{Beau2026a33} audits it and identifies no representation: the projected-coordinate
@@ -519,8 +535,9 @@ and Effective Dimension of the Admissible Trajectory\\[4pt]
 
   \subsection*{Interpretive outlook}
 
-  The later interval theorem changes the status of Part~A without changing its data: the apparent
-  linear calibration is a finite-size diagnostic, not a structural scaling law.
+  The interval theorem of the Critical Coverage note fixes the status of Part~A without touching
+  its data: the apparent linear calibration is a finite-size diagnostic, not a structural scaling
+  law.
   Part~B likewise measures the carrier visible to the conjugate-pair covariance rather than the
   dimension of the underlying spin-$\tfrac{1}{2}$ sector directly.
   This interpretation is a programme-level reading of the combined results, not an additional
