@@ -13,16 +13,21 @@ O28 reports two measurements from the Q5a–O5 checkpoints:
   The linear law $n_1 \approx \hat{\alpha} q$ ($\hat{\alpha} \approx 0.053$, calibrated on
   $q \le 211$) fails out of sample (overprediction up to $+88\%$ at $q = 601$), while
   $n_1(q)/q$ decreases to $0.032$.
-  The O14-corrected exponent satisfies $\delta_{\mathrm{corr}}(q) \in [7.4, 10.6]$ across the full
-  range, confirming the structural conclusion of O25.
-- **Part B — effective dimension.** The per-pair covariance operator
-  $\mathcal{C}_c \in \mathrm{End}(H_{\mathrm{eff}})$, $H_{\mathrm{eff}} = \mathbb{C}^3$, has
-  $1\%$ threshold rank $r_{\mathrm{eff}}^{1\%} = 3$ for every conjugate pair and every tested
-  prime, with invariant resolved spectrum $[1 : 1/2 : 1/2]$.
-  The gap with the spin-½ prediction $d_\rho^2 = 4$ is resolved in O29: the anti-linear
-  Born–Infeld parity makes $d_\rho^2 = 4$ inaccessible from conjugate-pair data, and
-  $r_{\mathrm{eff}} = 3$ identifies the adjoint (spin-1) carrier
-  $H_{\mathrm{eff}} \simeq \mathrm{Sym}^2(V_\rho)$.
+  The declared finite-size adjustment
+  $\delta_{\mathrm{corr}}(q) = \bar{\delta}_{\mathrm{pair}}(q) - \eta\log q/\log n_1(q)$ lies in
+  the target window $[7.4, 10.6]$ over $q \in \{29, 61, 101, 151, 211\}$; O25 reports the same
+  adjustment overcorrecting beyond that range, to $6.53$ at $q = 601$. O14 establishes that the
+  term does not correct the intra-$q$ fitted exponent, so the stability is a diagnostic and not a
+  corrected capacity exponent.
+- **Part B — effective dimension.** Over the samples of the paper's perimeter, the per-pair
+  covariance operator $\mathcal{C}_c \in \mathrm{End}(H_{\mathrm{eff}})$,
+  $H_{\mathrm{eff}} = \mathbb{C}^3$, has $1\%$ threshold rank $r_{\mathrm{eff}}^{1\%} = 3$ for
+  every conjugate pair at $q \in \{61, 101, 151\}$, with resolved spectrum $[1 : 1/2 : 1/2]$.
+  This is a finite-data value and not an invariant: the extended recomputation of O29 finds rank
+  three modal, at $32/50$ pairs for $q = 101$ and $103/105$ for $q = 211$.
+  The gap with the spin-½ prediction $d_\rho^2 = 4$ stays open: O29 audits what the covariance
+  identifies and reaches no representation, the adjoint reading of $H_{\mathrm{eff}}$ being
+  supplied rather than derived and $V_\rho$ supplied elsewhere.
 
 ## The exact window-depth law
 
@@ -40,10 +45,14 @@ accessible $q$.
 
 O28 follows the chain:
 
-- **O25**: $\delta_{\mathrm{pair}}$ as a structural invariant; the role of $n_1(q)/q$.
+- **O25**: evidence for $\delta_{\mathrm{pair}}$ as a structural invariant; the role of $n_1(q)/q$.
 - **O26**: representation-theoretic dictionary and the effective-dimension test (Criterion 5.4).
-- **O27**: rigidity — all admissible morphisms factor through $\mathfrak{su}(2)$.
-- **O29**: identification of the adjoint carrier resolving the $3$-vs-$4$ dimension gap.
+- **O27**: every admissible morphism factors uniquely through the admissibility quotient, with the
+  canonical $\mathfrak{su}(2)$ action on $\mathrm{End}(V_\rho)$ under two premises, the
+  identification of the admissible image with the neutral traceless sector (assumed and derived
+  nowhere) and the conditionally supplied spinor carrier of O23; the vector lift is open.
+- **O29**: audit of what the O28 covariance does and does not identify; the $3$-vs-$4$ dimension gap
+  stays open.
 
 ## Repository structure
 
@@ -58,5 +67,5 @@ and Code Availability section.
 ## Keywords
 
 spectral admissibility, BFS window depth, pair observable, Weil representation, Heisenberg
-graphs, capacity exponent, normalisation correction, covariance operator, effective dimension,
+graphs, capacity exponent, finite-size adjustment, covariance operator, effective dimension,
 admissible trajectory, Born–Infeld saturation

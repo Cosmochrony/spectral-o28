@@ -1,7 +1,8 @@
 cff-version: 1.2.0
 message: "If you cite this work, please use the metadata from this file."
-title: "Asymptotic Calibration of the BFS Window and Effective Dimension of the Admissible Trajectory O28 — Spectral Admissibility Sub-programme"
-type: software
+title: "Asymptotic Calibration of the BFS Window and Effective Dimension of the Admissible Trajectory — O28, Spectral Admissibility Sub-programme"
+type: article
+version: "2.0"
 authors:
   - family-names: "Beau"
     given-names: "Jérôme"
@@ -11,7 +12,7 @@ doi: "10.5281/zenodo.19767801"
 license: "CC-BY-4.0"
 preferred-citation:
   type: article
-  title: "Asymptotic Calibration of the BFS Window and Effective Dimension of the Admissible Trajectory O28 — Spectral Admissibility Sub-programme"
+  title: "Asymptotic Calibration of the BFS Window and Effective Dimension of the Admissible Trajectory — O28, Spectral Admissibility Sub-programme"
   authors:
     - family-names: "Beau"
       given-names: "Jérôme"
