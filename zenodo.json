@@ -3,5 +3,6 @@
   "web_url": "https://cosmochrony.org/science/spectral/program/o28/",
   "main_tex": "tex/SpectralO28.tex",
   "zenodo_id": 19767801,
-  "doi": "10.5281/zenodo.19767801"
+  "doi": "10.5281/zenodo.19767801",
+  "notes": "Version 2.0 withdraws every identification attributed to O29: the effective rank three does not identify an irreducible adjoint carrier, H_eff is not identified with Sym^2(V_rho), and V_rho is supplied elsewhere rather than recovered as a Veronese square root, so the gap to the spin-1/2 prediction d_rho^2 = 4 stays open. The rank-three measurement and the [1 : 1/2 : 1/2] spectrum are reported as finite-data values of the stated protocol rather than invariants; the extended recomputation of O29 finds rank three modal, at 32/50 pairs for q = 101 and 103/105 for q = 211. The subtraction eta log q / log n_1(q) is presented as a declared finite-size adjustment and no longer as a normalisation correction, since O14 establishes that a factor q^(-eta) leaves a fixed-q fitted slope invariant and that the endpoint identity carries the term with the opposite sign together with the fitted amplitude."
 }
