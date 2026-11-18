@@ -206,7 +206,7 @@ def plot_n1_calibration(results, slope, intercept, outdir, delta_rows=None):
         dstds = np.array([r["delta_pair_std"]  for r in delta_rows])
         dcorr = np.array([r["delta_corr"]      for r in delta_rows])
         ax.axhspan(ADMISSIBLE_LO, ADMISSIBLE_HI, alpha=0.12, color=COLOR_WIN,
-                   label=f"target $[{ADMISSIBLE_LO},{ADMISSIBLE_HI}]$")
+                   label=f"historical comparison range $[{ADMISSIBLE_LO},{ADMISSIBLE_HI}]$")
         ax.errorbar(dqs, dbars, yerr=dstds, fmt="o", color=COLOR_RAW,
                     capsize=4, lw=1.2, label=r"$\bar{\delta}_{\rm pair}$ (raw)")
         ax.plot(dqs, dcorr, "s--", color=COLOR_CORR, markersize=7, lw=1.4,
